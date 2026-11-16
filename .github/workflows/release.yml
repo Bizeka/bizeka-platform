@@ -1,0 +1,82 @@
+name: release
+# Runs on a version tag (for example v0.1.3-alpha): build, test, pack, and attach the
+# NuGet (.nupkg, .snupkg) and npm (.tgz) archives to the GitHub Release of that tag.
+# Registry publication is documented below but disabled until the owner provides keys.
+on:
+  push:
+    tags: [ 'v*' ]
+permissions:
+  contents: read
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
+        with:
+          global-json-file: global.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24
+      - name: Tag must match the package version
+        shell: pwsh
+        run: |
+          $version = ([xml](Get-Content -Raw src/bizeka.extensions/Bizeka.Extensions.csproj)).Project.PropertyGroup.Version |
+              Where-Object { $_ } | Select-Object -First 1
+          if ("v$version" -ne '${{ github.ref_name }}') { throw "Tag ${{ github.ref_name }} does not match version $version." }
+      - name: Guards, build, test, pack
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          ./tools/Test-RepoGuards.ps1 -Root . -Strict
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ./tools/Initialize-Dependencies.ps1
+          dotnet build Bizeka.Platform.slnx -c Release --no-restore -m:1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          dotnet test Bizeka.Platform.slnx -c Release --no-build --no-restore
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm --prefix src/bizeka.extensions test
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm --prefix src/bizeka.dynamicforms test
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm --prefix src/bizeka.theme run test:theme:strict
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ./tools/Test-Packages.ps1
+          ./tools/Test-Dependencies.ps1
+      - name: Attach archives to the GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          prerelease=""
+          case "$TAG" in *-*) prerelease="--prerelease" ;; esac
+          if ! gh release view "$TAG" >/dev/null 2>&1; then
+            gh release create "$TAG" --verify-tag $prerelease --title "Bizeka Platform ${TAG#v}" \
+              --notes "See CHANGELOG.md for this version."
+          fi
+          gh release upload "$TAG" --clobber \
+            artifacts/packages/nuget/*.nupkg artifacts/packages/nuget/*.snupkg artifacts/packages/npm/*.tgz
+
+      # Registry publication: disabled until the owner adds the NUGET_API_KEY and NPM_TOKEN
+      # repository secrets and removes `if: false`. npm uses provenance from this workflow
+      # (needs `id-token: write`); prerelease versions are published under the `alpha` dist-tag.
+      - name: Publish to nuget.org and npmjs.com (disabled)
+        if: false
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          set -euo pipefail
+          dotnet nuget push "artifacts/packages/nuget/*.nupkg" --api-key "$NUGET_API_KEY" \
+            --source https://api.nuget.org/v3/index.json --skip-duplicate
+          for tgz in artifacts/packages/npm/*.tgz; do
+            npm publish "$tgz" --access public --tag alpha --provenance
+          done

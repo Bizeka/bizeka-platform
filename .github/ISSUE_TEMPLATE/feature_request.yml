@@ -1,0 +1,23 @@
+name: Feature request
+description: Propose a change to a Platform module.
+labels: [enhancement]
+body:
+  - type: dropdown
+    id: module
+    attributes:
+      label: Module
+      options: [Extensions, DynamicForms, Todo, OnlineChat, Theme, Demo, Tooling or docs]
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What you are trying to do and why the current module does not cover it.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: The behaviour you suggest. The open modules are kept deliberately small; explain why this belongs in Platform.

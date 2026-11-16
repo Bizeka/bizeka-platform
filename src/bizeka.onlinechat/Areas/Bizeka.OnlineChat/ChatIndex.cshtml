@@ -1,0 +1,12 @@
+﻿@page "/OnlineChat"
+@inject Serenity.ITextLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer.Get("OnlineChat.PageTitle");
+}
+<div id="GridDiv" class="s-DataGrid s-OnlineChat-ChatPanel"></div>
+
+<script type="module">
+    import pageInit from '@("~/esm/Modules/OnlineChat/ChatPanel/ChatPage.js")';
+    pageInit();
+</script>

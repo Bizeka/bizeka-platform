@@ -1,0 +1,18 @@
+{
+  "Validation.Bizeka.PhoneMultiple": "Phone numbers should be entered in format '(503) 555-9831'. Multiple numbers can be separated with comma.",
+  "Validation.Bizeka.Phone": "Phone numbers should be entered in format '(503) 555-9831'.",
+  "Dialog.DynamicFieldsTab": "Dynamic Fields",
+  "Dialog.GeneralTab": "General",
+  "Site.Extensions.RecentColors": "Recent Colors",
+  "Site.Extensions.PickColor": "Pick a color",
+  "Site.Extensions.PresetColors": "Preset colors",
+  "Site.Extensions.Filters": "Filters",
+  "Site.Extensions.GeneralTab": "General",
+  "Site.Extensions.DynamicFieldsTab": "Dynamic Fields",
+  "Site.Extensions.InvalidRecordJson": "{0} could not be parsed for this record.",
+  "Site.Extensions.NoRecords": "No records to show",
+  "Site.Extensions.Decrease": "Decrease",
+  "Site.Extensions.Increase": "Increase",
+  "Site.Extensions.TagListPlaceholder": "Type a value and press Enter",
+  "Site.Extensions.TagListAdd": "Add"
+}

@@ -1,0 +1,30 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <Deterministic>true</Deterministic>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <RepositoryUrl>https://github.com/Bizeka/bizeka-platform</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Bizeka/bizeka-platform</PackageProjectUrl>
+    <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+    <SerenityVersion Condition="'$(SerenityVersion)' == ''">10.6.3</SerenityVersion>
+    <!-- Keep restored framework typings without rewriting distributable npm dependencies. -->
+    <RestoreNodeTypesPatchDependencies>false</RestoreNodeTypesPatchDependencies>
+    <!-- Frontend must build by default. Opt out only locally with -p:SkipTSBuild=true; CI never does. -->
+    <SkipTSBuild Condition="'$(SkipTSBuild)' == ''">false</SkipTSBuild>
+    <Company>Bizeka</Company>
+    <Copyright>Copyright (c) 2026 Bizeka</Copyright>
+    <RepositoryType>git</RepositoryType>
+    <!-- SourceLink is built into the .NET SDK; map PDBs to the public repository. -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(MSBuildProjectName)' != 'Bizeka.TextTemplates'">
+    <None Include="$(MSBuildThisFileDirectory)LICENSE" Pack="true" PackagePath="" />
+    <None Include="$(MSBuildThisFileDirectory)THIRD-PARTY-NOTICES.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+</Project>

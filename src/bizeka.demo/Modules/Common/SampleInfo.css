@@ -1,0 +1,175 @@
+.demo-sample-category {
+  font-size: 0.55em;
+  color: var(--bizeka-text-muted, var(--bs-secondary-color));
+}
+
+.demo-sample-info {
+  border: 1px solid var(--bizeka-border, var(--bs-border-color));
+  border-radius: var(--bizeka-radius-md, 0.5rem);
+  background: var(--bizeka-surface, var(--bs-body-bg));
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+.demo-sample-description p:last-child {
+  margin-bottom: 0.5rem;
+}
+
+.demo-sample-uses {
+  margin-bottom: 0.5rem;
+  color: var(--bizeka-text-muted, var(--bs-secondary-color));
+}
+
+.demo-source > summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Collapsible sections show a colored plus or minus button instead of the default triangle. */
+.demo-sample-intro > summary,
+.demo-source > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--bizeka-text, var(--bs-body-color));
+}
+
+.demo-sample-intro > summary::-webkit-details-marker,
+.demo-source > summary::-webkit-details-marker {
+  display: none;
+}
+
+.demo-sample-intro > summary::before,
+.demo-source > summary::before {
+  content: "+";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--bizeka-accent, var(--bs-primary));
+  color: var(--bizeka-accent-contrast, #fff);
+  font-weight: 700;
+  line-height: 1;
+  flex: none;
+}
+
+.demo-sample-intro[open] > summary::before,
+.demo-source[open] > summary::before {
+  content: "\2212";
+}
+
+.demo-sample-intro > summary:focus-visible,
+.demo-source > summary:focus-visible {
+  outline: 2px solid var(--bizeka-focus-ring, var(--bs-primary));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.demo-source-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin: 0.5rem 0;
+}
+
+.demo-source-tab.active {
+  background: var(--bizeka-accent, var(--bs-primary));
+  color: var(--bizeka-accent-contrast, #fff);
+}
+
+.demo-source-code,
+.demo-sample-output pre {
+  max-height: 28rem;
+  overflow: auto;
+  margin: 0;
+  padding: 0.75rem;
+  border-radius: var(--bizeka-radius-sm, 0.25rem);
+  background: var(--bizeka-surface-muted, var(--bs-tertiary-bg));
+  color: var(--bizeka-text, var(--bs-body-color));
+  font-size: 0.8125rem;
+  white-space: pre;
+}
+
+.demo-sample-output {
+  margin-top: 1rem;
+}
+
+.demo-sample-output-title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+/* A minimum, not a fixed height: a grid with quick filters, or a toolbar that wraps on
+   phones, grows instead of pushing the pager out of the card. */
+.demo-sample-grid {
+  min-height: 22rem;
+}
+
+.demo-sample-grid > .grid-container {
+  min-height: 16rem;
+}
+
+.demo-sample-section {
+  margin-bottom: 1.5rem;
+}
+
+.demo-theme-current {
+  padding: 0.5rem 0.75rem;
+  border-inline-start: 3px solid var(--bizeka-accent, var(--bs-primary));
+  background: var(--bizeka-surface-muted, var(--bs-tertiary-bg));
+}
+
+/* The token index stays in view while the groups scroll. */
+.demo-token-index {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+  background: var(--bizeka-surface, var(--bs-body-bg));
+}
+
+.demo-token-index nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.demo-token-index input {
+  flex: 1 1 12rem;
+  max-width: 20rem;
+}
+
+.demo-chat-container {
+  height: 36rem;
+}
+
+@media (max-width: 767.98px) {
+  section.content:has(.demo-chat-container) {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100dvh - 48px) !important;
+  }
+
+  #PanelDiv:has(.demo-chat-container) {
+    display: flex;
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  .demo-chat-container {
+    flex: 1 1 auto;
+    height: auto;
+    min-height: 18rem;
+  }
+}

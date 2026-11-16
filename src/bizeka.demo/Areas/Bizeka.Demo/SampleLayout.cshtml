@@ -1,0 +1,13 @@
+@* Shared layout of every Bizeka sample: title, category and the sample folder used by SampleInfo to load the source. *@
+@{
+    Layout = "_Layout";
+    var category = ViewData[Bizeka.Demo.DemoSampleHelper.CategoryKey] as string;
+    var folder = ViewData[Bizeka.Demo.DemoSampleHelper.FolderKey] as string;
+}
+@section Head {
+    <meta name="demo-sample-folder" content="@folder" />
+}
+@section ContentHeader {
+    <h1>@ViewData["Title"] <small class="demo-sample-category">@category</small></h1>
+}
+@RenderBody()

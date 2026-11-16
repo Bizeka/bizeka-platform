@@ -1,0 +1,4 @@
+{
+  "RootNamespace": "Bizeka.OnlineChat",
+  "Extends": "defaults@9.0.0"
+}

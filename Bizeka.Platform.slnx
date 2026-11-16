@@ -1,0 +1,31 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/bizeka.demo/">
+    <Project Path="src/bizeka.demo/Bizeka.Demo.csproj" />
+  </Folder>
+  <Folder Name="/src/bizeka.dynamicforms/">
+    <Project Path="src/bizeka.dynamicforms/Bizeka.DynamicForms.csproj" />
+  </Folder>
+  <Folder Name="/src/bizeka.extensions/">
+    <Project Path="src/bizeka.extensions/Bizeka.Extensions.csproj" />
+  </Folder>
+  <Folder Name="/src/bizeka.onlinechat/">
+    <Project Path="src/bizeka.onlinechat/Bizeka.OnlineChat.csproj" />
+  </Folder>
+  <Folder Name="/src/bizeka.theme/">
+    <Project Path="src/bizeka.theme/Bizeka.Theme.csproj" />
+  </Folder>
+  <Folder Name="/src/bizeka.todo/">
+    <Project Path="src/bizeka.todo/Bizeka.Todo.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Bizeka.DynamicForms.Tests/Bizeka.DynamicForms.Tests.csproj" />
+    <Project Path="tests/Bizeka.Extensions.Tests/Bizeka.Extensions.Tests.csproj" />
+    <Project Path="tests/Bizeka.Integration.Tests/Bizeka.Integration.Tests.csproj" />
+    <Project Path="tests/Bizeka.OnlineChat.Tests/Bizeka.OnlineChat.Tests.csproj" />
+    <Project Path="tests/Bizeka.Todo.Tests/Bizeka.Todo.Tests.csproj" />
+  </Folder>
+  <Folder Name="/tools/">
+    <Project Path="tools/Bizeka.TextTemplates/Bizeka.TextTemplates.csproj" />
+  </Folder>
+</Solution>

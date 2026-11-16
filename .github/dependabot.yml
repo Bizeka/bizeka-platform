@@ -1,0 +1,32 @@
+version: 2
+updates:
+  - package-ecosystem: nuget
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    # Serenity, Sergen and the migration stack move only in the coordinated upgrade (docs/adr/0003-coordinated-serenity-upgrade.md).
+    ignore:
+      - dependency-name: "Serenity.*"
+      - dependency-name: "sergen"
+      - dependency-name: "FluentMigrator*"
+  - package-ecosystem: npm
+    directories:
+      - /src/bizeka.extensions
+      - /src/bizeka.dynamicforms
+      - /src/bizeka.todo
+      - /src/bizeka.onlinechat
+      - /src/bizeka.theme
+      - /src/bizeka.demo
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: "@serenity-is/*"
+      # TypeScript majors move with the Serenity upgrade.
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

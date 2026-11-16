@@ -1,0 +1,10 @@
+* text=auto
+*.cs text diff=csharp
+*.ts text
+*.json text
+*.md text
+*.ps1 text
+*.sh text eol=lf
+*.png binary
+*.jpg binary
+*.woff2 binary

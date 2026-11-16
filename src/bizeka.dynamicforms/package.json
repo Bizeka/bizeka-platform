@@ -1,0 +1,62 @@
+{
+  "name": "@bizeka/dynamicforms",
+  "version": "0.1.3-alpha",
+  "description": "Open source Serenity module by Bizeka.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "THIRD-PARTY-NOTICES.md"
+  ],
+  "peerDependencies": {
+    "@serenity-is/corelib": "10.6.3",
+    "@serenity-is/domwise": "10.6.3",
+    "@serenity-is/extensions": "10.6.3",
+    "@serenity-is/sleekgrid": "10.6.3",
+    "@bizeka/extensions": "0.1.3-alpha"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@serenity-is/tsbuild": "10.6.3",
+    "esbuild": "^0.28.2",
+    "jsdom": "^30.1.3",
+    "typescript": "7.0.2",
+    "vitest": "5.0.5",
+    "@bizeka/extensions": "file:../bizeka.extensions",
+    "@serenity-is/corelib": "./node_modules/.dotnet/serenity.corelib",
+    "@serenity-is/domwise": "./node_modules/.dotnet/serenity.domwise",
+    "@serenity-is/extensions": "./node_modules/.dotnet/serenity.extensions",
+    "@serenity-is/sleekgrid": "./node_modules/.dotnet/serenity.sleekgrid"
+  },
+  "scripts": {
+    "build": "node ./tsbuild.js && tsc --noEmit && npm run build:package",
+    "build:package": "npm run build:package:js && npm run build:package:types",
+    "build:package:js": "node ./package.build.mjs",
+    "build:package:types": "tsc -p ./tsconfig.package.json",
+    "build:watch": "node ./tsbuild.js --watch",
+    "test": "vitest run",
+    "pack:local": "npm pack",
+    "tsc": "tsc",
+    "prepack": "node ../../tools/Prepare-NpmPackage.mjs"
+  },
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bizeka/bizeka-platform.git",
+    "directory": "src/bizeka.dynamicforms"
+  },
+  "bugs": {
+    "url": "https://github.com/Bizeka/bizeka-platform/issues"
+  },
+  "homepage": "https://github.com/Bizeka/bizeka-platform#readme"
+}

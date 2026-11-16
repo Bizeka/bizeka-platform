@@ -1,0 +1,93 @@
+name: ci
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  guards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Repository guards
+        shell: pwsh
+        run: ./tools/Test-RepoGuards.ps1 -Root . -Strict
+
+  build:
+    needs: guards
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-latest, windows-latest ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
+        with:
+          global-json-file: global.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24
+      - name: Restore, build, test all Platform projects
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          ./tools/Initialize-Dependencies.ps1
+          dotnet build Bizeka.Platform.slnx -c Release --no-restore -m:1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          dotnet test Bizeka.Platform.slnx -c Release --no-build --no-restore
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ./tools/Update-TextTemplates.ps1 -Check
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ./tools/Update-ServerTypes.ps1 -Check
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm --prefix src/bizeka.extensions test
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm --prefix src/bizeka.dynamicforms test
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm --prefix src/bizeka.theme run test:theme:strict
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ./tools/Test-Packages.ps1
+          ./tools/Test-NpmConsumer.ps1
+          ./tools/Test-PackageConsumer.ps1
+          # Build and generators must not change tracked files.
+          $changed = git status --porcelain
+          if ($changed) { $changed; throw 'The build changed tracked files; regenerate and commit them.' }
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: platform-packages-${{ matrix.os }}
+          path: artifacts/packages/
+          if-no-files-found: error
+
+  providers:
+    needs: guards
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        provider: [Postgres, SqlServer, MySql]
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
+        with:
+          global-json-file: global.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24
+      - name: Build integration tests
+        shell: pwsh
+        run: |
+          ./tools/Initialize-Dependencies.ps1
+          dotnet build tests/Bizeka.Integration.Tests -c Release --no-restore -m:1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Migrations and authorization on a real database
+        shell: pwsh
+        run: ./tools/Test-Provider.ps1 -Provider '${{ matrix.provider }}'

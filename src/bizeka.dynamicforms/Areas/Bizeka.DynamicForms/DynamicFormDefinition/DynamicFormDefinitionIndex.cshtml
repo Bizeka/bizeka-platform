@@ -1,0 +1,14 @@
+@inject Serenity.ITextLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer.Get("Db.DynamicForms.DynamicFormDefinition.EntityPlural");
+    Layout = "_Layout";
+    var modulePath = Url.Content("~/_content/Bizeka.DynamicForms/esm/Modules/DynamicFormDefinition/DynamicFormDefinitionPage.js");
+}
+
+<div id="GridDiv"></div>
+
+<script nonce="@Html.CspNonce()" type="module">
+    import pageInit from '@modulePath';
+    pageInit();
+</script>

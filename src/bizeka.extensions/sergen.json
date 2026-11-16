@@ -1,0 +1,4 @@
+{
+  "RootNamespace": "Bizeka.Extensions",
+  "Extends": "defaults@9.0.0"
+}

@@ -1,0 +1,13 @@
+@inject Serenity.ITextLocalizer Localizer
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = Localizer.Get("Navigation.Bizeka Platform/Todo/Priorities");
+}
+
+<div id="GridDiv"></div>
+
+<script nonce="@Html.CspNonce()" type="module">
+import * as page from '@Url.Content("~/_content/Bizeka.Todo/esm/Modules/TaskPriority/TaskPriorityPage.js")';
+page.default && page.default();
+</script>

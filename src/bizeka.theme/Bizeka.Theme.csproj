@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <PropertyGroup>
+    <RootNamespace>Bizeka.Theme</RootNamespace>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <IsPackable>true</IsPackable>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageId>Bizeka.Theme</PackageId>
+    <Version>0.1.3-alpha</Version>
+    <Authors>Bizeka</Authors>
+    <Company>Bizeka</Company>
+    <Description>Token-driven Serene soft theme overrides for Serenity applications.</Description>
+    <PackageTags>Serenity;Theme;Bizeka;OpenSource;SleekGrid;DarkMode</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <StaticWebAssetBasePath>_content/$(PackageId)</StaticWebAssetBasePath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serenity.Extensions" />    <PackageReference Include="Serenity.Corelib" />
+    <PackageReference Include="Serenity.Net.Web" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+    <Content Update="wwwroot\bizeka-theme\**\*">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Pack>true</Pack>
+      <PackagePath>staticwebassets\bizeka-theme</PackagePath>
+    </Content>
+  </ItemGroup>
+
+  <Target Name="NpmInstall" Condition="!Exists('node_modules\@serenity-is\tsbuild\package.json')">
+    <Message Text="Installing NPM packages for $(ProjectName)..." Importance="high" />
+    <Exec Command="npm ci --ignore-scripts" />
+    <Exec Command="dotnet msbuild &quot;$(MSBuildProjectFullPath)&quot; -t:RestoreNodeTypes -p:Configuration=$(Configuration)" />
+  </Target>
+
+  <Target Name="RunTSBuild" BeforeTargets="BeforeBuild" DependsOnTargets="ResolveProjectReferences;RestoreNodeTypes;NpmInstall" Condition="'$(SkipTSBuild)' != 'true'">
+    <Message Text="Executing TypeScript compiler for $(ProjectName)..." Importance="high" />
+    <ItemGroup>
+      <CleanedEsmFiles Include="wwwroot\esm\**" />
+    </ItemGroup>
+    <Exec Command="npm run build" />
+    <!-- Bundles are build output: add them after the build so a clean clone packs them as static web assets. -->
+    <ItemGroup>
+      <CleanedEsmFiles Remove="wwwroot\esm\**" />
+      <Content Remove="@(CleanedEsmFiles)" />
+      <Content Include="wwwroot\esm\**\*.js;wwwroot\esm\**\*.css;wwwroot\esm\**\*.map" Exclude="@(Content)" CopyToOutputDirectory="Never" CopyToPublishDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
+    </ItemGroup>
+  </Target>
+</Project>

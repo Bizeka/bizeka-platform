@@ -1,0 +1,16 @@
+@inject Serenity.ITextLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer.Get("Site.OnlineChat.Chats");
+    ViewData["BodyClass"] = "full-height-page";
+}
+
+@section Head {
+    <link rel="stylesheet" href="@Html.ResolveWithHash("~/_content/Bizeka.OnlineChat/esm/Modules/OnlineChat/ChatPanel/OnlineChatPage.css")" />
+}
+
+<div id="ChatPanelContainer" class="bzk-onlinechat-fullpage"></div>
+
+<script nonce="@Html.CspNonce()" type="module">
+    import * as page from '@Html.ResolveWithHash("~/_content/Bizeka.OnlineChat/esm/Modules/OnlineChat/ChatPanel/OnlineChatPage.js")';
+    page.default && page.default();
+</script>

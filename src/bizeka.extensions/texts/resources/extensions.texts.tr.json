@@ -1,0 +1,18 @@
+{
+  "Validation.Bizeka.PhoneMultiple": "Telefon numaraları '(503) 555-9831' formatında girilmelidir. Birden fazla numara virgülle ayrılabilir.",
+  "Validation.Bizeka.Phone": "Telefon numaraları '(503) 555-9831' formatında girilmelidir.",
+  "Dialog.DynamicFieldsTab": "Dinamik Alanlar",
+  "Dialog.GeneralTab": "Genel",
+  "Site.Extensions.RecentColors": "Son Renkler",
+  "Site.Extensions.PickColor": "Renk seç",
+  "Site.Extensions.PresetColors": "Hazır renkler",
+  "Site.Extensions.Filters": "Filtreler",
+  "Site.Extensions.GeneralTab": "Genel",
+  "Site.Extensions.DynamicFieldsTab": "Dinamik Alanlar",
+  "Site.Extensions.InvalidRecordJson": "Bu kaydın {0} alanı ayrıştırılamadı.",
+  "Site.Extensions.NoRecords": "Gösterilecek kayıt yok",
+  "Site.Extensions.Decrease": "Azalt",
+  "Site.Extensions.Increase": "Artır",
+  "Site.Extensions.TagListPlaceholder": "Bir değer yazıp Enter'a basın",
+  "Site.Extensions.TagListAdd": "Ekle"
+}

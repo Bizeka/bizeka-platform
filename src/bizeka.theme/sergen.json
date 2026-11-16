@@ -1,0 +1,4 @@
+{
+  "RootNamespace": "Bizeka.Theme",
+  "Extends": "defaults@9.0.0"
+}

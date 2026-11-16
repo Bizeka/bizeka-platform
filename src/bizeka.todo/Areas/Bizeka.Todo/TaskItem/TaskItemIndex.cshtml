@@ -1,0 +1,13 @@
+@inject Serenity.ITextLocalizer Localizer
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = Localizer.Get("Navigation.Bizeka Platform/Todo/Tasks");
+}
+
+<div id="GridDiv"></div>
+
+<script nonce="@Html.CspNonce()" type="module">
+import * as page from '@Html.ResolveWithHash("~/_content/Bizeka.Todo/esm/Modules/TaskItem/TaskItemPage.js")';
+page.default && page.default();
+</script>

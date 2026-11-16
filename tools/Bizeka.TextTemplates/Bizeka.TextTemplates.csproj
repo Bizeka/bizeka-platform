@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><IsPackable>false</IsPackable></PropertyGroup>
+  <ItemGroup>
+    <!-- Only Serenity: the module assemblies are loaded from their own build output (ModuleLoadContext). -->
+    <PackageReference Include="Serenity.Net.Web" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,6 @@
+<Project>
+  <ItemGroup>
+    <!-- Build configuration must never overwrite a consuming host's files. -->
+    <Content Update="package.json;package-lock.json;sergen.json;tsconfig*.json" Pack="false" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
+  </ItemGroup>
+</Project>

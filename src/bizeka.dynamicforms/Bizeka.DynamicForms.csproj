@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <PropertyGroup>
+    <RootNamespace>Bizeka.DynamicForms</RootNamespace>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <IsPackable>true</IsPackable>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageId>Bizeka.DynamicForms</PackageId>
+    <Version>0.1.3-alpha</Version>
+    <Authors>Bizeka</Authors>
+    <Company>Bizeka</Company>
+    <Description>Open source reusable Serenity dynamic forms module by Bizeka.</Description>
+    <PackageTags>Serenity;DynamicForms;Bizeka;OpenSource;Feature</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <StaticWebAssetBasePath>_content/$(PackageId)</StaticWebAssetBasePath>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentMigrator" />
+    <PackageReference Include="Serenity.Extensions" />
+    <PackageReference Include="Serenity.Net.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\bizeka.extensions\Bizeka.Extensions.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+    <None Remove="Migrations\**\*.sql" />
+    <EmbeddedResource Include="Migrations\**\*.sql" />
+    <EmbeddedResource Update="texts\resources\*.json" WithCulture="false" />
+  </ItemGroup>
+  <Target Name="NpmInstall" Condition="!Exists('node_modules\\@serenity-is\\tsbuild\\package.json')">
+    <Message Text="Installing NPM packages for $(ProjectName)..." Importance="high" />
+    <Exec Command="npm ci --ignore-scripts" />
+    <Exec Command="dotnet msbuild &quot;$(MSBuildProjectFullPath)&quot; -t:RestoreNodeTypes -p:Configuration=$(Configuration)" />
+  </Target>
+  <Target Name="RunTSBuild" BeforeTargets="BeforeBuild" DependsOnTargets="ResolveProjectReferences;RestoreNodeTypes;NpmInstall" Condition="'$(SkipTSBuild)' != 'true'">
+    <Message Text="Executing TypeScript compiler for $(ProjectName)..." Importance="high" />
+    <ItemGroup>
+      <CleanedEsmFiles Include="wwwroot\esm\**" />
+    </ItemGroup>
+    <Exec Command="npm run build" />
+    <ItemGroup>
+      <CleanedEsmFiles Remove="wwwroot\esm\**" />
+      <Content Remove="@(CleanedEsmFiles)" />
+      <Content Include="wwwroot\esm\**\*.js;wwwroot\esm\**\*.css;wwwroot\esm\**\*.map" Exclude="@(Content)" CopyToOutputDirectory="Never" CopyToPublishDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
+    </ItemGroup>
+  </Target>
+</Project>

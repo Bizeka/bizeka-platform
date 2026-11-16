@@ -1,0 +1,1856 @@
+:root[data-bizeka-theme="bizeka"] body {
+    background: var(--bizeka-canvas);
+    color: var(--bizeka-text);
+    font-family: var(--bizeka-font-sans);
+}
+
+/* Shell: only surface, text, and border paint. Serenity owns its dimensions. */
+:root[data-bizeka-theme="bizeka"] .content-wrapper,
+:root[data-bizeka-theme="bizeka"] .content-header,
+:root[data-bizeka-theme="bizeka"] .content {
+    background-color: var(--bizeka-canvas);
+    color: var(--bizeka-text);
+}
+
+:root[data-bizeka-theme="bizeka"] .main-header .navbar,
+:root[data-bizeka-theme="bizeka"] .main-header .navbar-nav > li > a,
+:root[data-bizeka-theme="bizeka"] .navbar-static-top {
+    background-color: var(--bizeka-surface-raised);
+    color: var(--bizeka-text);
+    border-color: var(--bizeka-border);
+}
+
+:root[data-bizeka-theme="bizeka"] .main-sidebar,
+:root[data-bizeka-theme="bizeka"] .sidebar,
+:root[data-bizeka-theme="bizeka"] .sidebar-menu {
+    background-color: var(--bizeka-surface);
+    color: var(--bizeka-text);
+    border-color: var(--bizeka-border);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-sidebar {
+    background-color: var(--bizeka-surface);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-sidebar-pane {
+    background-color: var(--bizeka-surface);
+    border-color: var(--bizeka-border);
+}
+
+/* Serenity's pane is a fixed-height flex column but its menu never scrolls, so
+   open groups pushed the lower items off screen. The search stays on top and
+   only the menu scrolls. */
+:root[data-bizeka-theme="bizeka"] .s-sidebar-pane > .s-sidebar-menu {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--bizeka-border-strong) transparent;
+}
+
+:root[data-bizeka-theme="bizeka"] .bizeka-theme-dropdown .bizeka-theme-option {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+:root[data-bizeka-theme="bizeka"] .bizeka-theme-dropdown .bizeka-theme-option.active {
+    background-color: var(--bizeka-accent-soft);
+    color: var(--bizeka-accent);
+    font-weight: 600;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-sidebar-header {
+    background-color: var(--bizeka-surface-raised);
+    border-bottom: 1px solid var(--bizeka-border);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-sidebar-header-link,
+:root[data-bizeka-theme="bizeka"] .s-sidebar-toggler,
+:root[data-bizeka-theme="bizeka"] .s-sidebar-header-title {
+    color: var(--bizeka-text);
+}
+
+:root[data-bizeka-theme="bizeka"] .bizeka-mode-toggle {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+:root[data-bizeka-theme="bizeka"] .bizeka-mode-toggle:hover {
+    color: var(--bizeka-accent);
+}
+
+/* Sidebar Controls & Search */
+:root[data-bizeka-theme="bizeka"] .sidebar-form,
+:root[data-bizeka-theme="bizeka"] .s-sidebar-search {
+    margin: 10px 12px 14px 12px !important;
+    position: relative;
+}
+
+:root[data-bizeka-theme="bizeka"] .sidebar-form input[type="text"],
+:root[data-bizeka-theme="bizeka"] .s-sidebar-search input,
+:root[data-bizeka-theme="bizeka"] .s-sidebar-search-input {
+    width: 100%;
+    height: 38px;
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--bizeka-text) 5%, var(--bizeka-surface));
+    border: 1px solid var(--bizeka-border);
+    color: var(--bizeka-text);
+    padding: 0 12px 0 34px;
+    font-size: 13px;
+    box-shadow: none;
+    transition: all 0.2s ease;
+}
+
+:root[data-bizeka-theme="bizeka"] .sidebar-form input[type="text"]::placeholder,
+:root[data-bizeka-theme="bizeka"] .s-sidebar-search input::placeholder,
+:root[data-bizeka-theme="bizeka"] .s-sidebar-search-input::placeholder {
+    color: var(--bizeka-text-muted);
+    opacity: 0.8;
+}
+
+:root[data-bizeka-theme="bizeka"] .sidebar-form input[type="text"]:focus,
+:root[data-bizeka-theme="bizeka"] .s-sidebar-search input:focus,
+:root[data-bizeka-theme="bizeka"] .s-sidebar-search-input:focus {
+    outline: none;
+    border-color: var(--bizeka-accent);
+    background: var(--bizeka-surface);
+    box-shadow: 0 0 0 2px var(--bizeka-focus-ring);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-sidebar-search-icon,
+:root[data-bizeka-theme="bizeka"] .sidebar-form .fa-search {
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--bizeka-text-muted);
+    font-size: 13px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Sidebar Menu Items */
+:root[data-bizeka-theme="bizeka"] .sidebar-menu > li,
+:root[data-bizeka-theme="bizeka"] .s-sidebar-item {
+    margin: 2px 8px;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-sidebar-link,
+:root[data-bizeka-theme="bizeka"] .sidebar-menu > li > a,
+:root[data-bizeka-theme="bizeka"] .sidebar-menu .treeview-menu > li > a {
+    color: var(--bizeka-text-muted);
+    border-radius: 8px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    border: 1px solid transparent;
+    transition: all 0.15s ease;
+    text-decoration: none;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-sidebar-link,
+:root[data-bizeka-theme="bizeka"] .sidebar-menu > li > a {
+    padding: 8px 12px;
+    font-size: 13.5px;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-sidebar-icon,
+:root[data-bizeka-theme="bizeka"] .sidebar-menu li > a > i,
+:root[data-bizeka-theme="bizeka"] .sidebar-menu li > a > .fa {
+    width: 22px;
+    margin-right: 8px;
+    text-align: center;
+    color: var(--bizeka-text-muted);
+    font-size: 14px;
+    transition: color 0.15s ease;
+}
+
+/* Hover state */
+:root[data-bizeka-theme="bizeka"] .s-sidebar-link:hover,
+:root[data-bizeka-theme="bizeka"] .sidebar-menu > li:hover > a,
+:root[data-bizeka-theme="bizeka"] .sidebar-menu .treeview-menu > li:hover > a {
+    background-color: color-mix(in srgb, var(--bizeka-text) 7%, transparent);
+    color: var(--bizeka-text);
+    border-color: color-mix(in srgb, var(--bizeka-border) 40%, transparent);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-sidebar-link:hover .s-sidebar-icon,
+:root[data-bizeka-theme="bizeka"] .sidebar-menu > li:hover > a > i,
+:root[data-bizeka-theme="bizeka"] .sidebar-menu > li:hover > a > .fa {
+    color: var(--bizeka-text);
+}
+
+/* Active / Selected state - High contrast, sleek accent border indicator */
+:root[data-bizeka-theme="bizeka"] .s-sidebar-pane .active > .s-sidebar-link,
+:root[data-bizeka-theme="bizeka"] .s-sidebar-item.active > .s-sidebar-link,
+:root[data-bizeka-theme="bizeka"] .sidebar-menu > li.active > a,
+:root[data-bizeka-theme="bizeka"] .sidebar-menu .treeview-menu > li.active > a {
+    background-color: color-mix(in srgb, var(--bizeka-accent) 22%, var(--bizeka-surface));
+    color: var(--bizeka-text) !important;
+    font-weight: 600;
+    border-color: color-mix(in srgb, var(--bizeka-accent) 45%, transparent);
+    border-left: 3px solid var(--bizeka-accent);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-sidebar-pane .active > .s-sidebar-link .s-sidebar-icon,
+:root[data-bizeka-theme="bizeka"] .s-sidebar-item.active > .s-sidebar-link .s-sidebar-icon,
+:root[data-bizeka-theme="bizeka"] .sidebar-menu > li.active > a > i,
+:root[data-bizeka-theme="bizeka"] .sidebar-menu > li.active > a > .fa,
+:root[data-bizeka-theme="bizeka"] .sidebar-menu .treeview-menu > li.active > a > i,
+:root[data-bizeka-theme="bizeka"] .sidebar-menu .treeview-menu > li.active > a > .fa {
+    color: var(--bizeka-accent);
+    opacity: 1;
+}
+
+/* Parent open menu */
+:root[data-bizeka-theme="bizeka"] .sidebar-menu > li.menu-open > a,
+:root[data-bizeka-theme="bizeka"] .s-sidebar-item.has-children.active > .s-sidebar-link {
+    background-color: color-mix(in srgb, var(--bizeka-accent) 12%, var(--bizeka-surface));
+    color: var(--bizeka-text);
+    font-weight: 600;
+    border-color: color-mix(in srgb, var(--bizeka-accent) 25%, transparent);
+}
+
+/* Treeview Submenu Indentation & Subtle Tree Guide */
+:root[data-bizeka-theme="bizeka"] .sidebar-menu .treeview-menu,
+:root[data-bizeka-theme="bizeka"] .s-sidebar-item > .s-sidebar-menu {
+    border-left: 1px solid color-mix(in srgb, var(--bizeka-border) 60%, transparent);
+    margin-left: 20px;
+    padding-left: 4px;
+    margin-top: 2px;
+    margin-bottom: 4px;
+}
+
+:root[data-bizeka-theme="bizeka"] .sidebar-menu .treeview-menu > li > a,
+:root[data-bizeka-theme="bizeka"] .s-sidebar-item > .s-sidebar-menu .s-sidebar-link {
+    font-size: 13px;
+    padding: 6px 10px;
+}
+
+/* Controls keep their standard Serenity classes and interactions. */
+:root[data-bizeka-theme="bizeka"] .btn-primary,
+:root[data-bizeka-theme="bizeka"] .s-Toolbar .tool-button.add-button,
+:root[data-bizeka-theme="bizeka"] .s-Toolbar .tool-button.save-and-close-button {
+    background-color: var(--bizeka-accent);
+    border-color: var(--bizeka-accent);
+    color: var(--bizeka-accent-contrast);
+    border-radius: var(--bizeka-radius-sm);
+}
+
+:root[data-bizeka-theme="bizeka"] .btn-primary:hover,
+:root[data-bizeka-theme="bizeka"] .btn-primary:focus,
+:root[data-bizeka-theme="bizeka"] .s-Toolbar .tool-button.add-button:hover,
+:root[data-bizeka-theme="bizeka"] .s-Toolbar .tool-button.save-and-close-button:hover {
+    background-color: var(--bizeka-accent-hover);
+    border-color: var(--bizeka-accent-hover);
+}
+
+:root[data-bizeka-theme="bizeka"] .btn:focus-visible,
+:root[data-bizeka-theme="bizeka"] button:focus-visible,
+:root[data-bizeka-theme="bizeka"] input:focus-visible,
+:root[data-bizeka-theme="bizeka"] select:focus-visible,
+:root[data-bizeka-theme="bizeka"] textarea:focus-visible {
+    outline: var(--bizeka-focus-outline);
+    outline-offset: var(--bizeka-focus-outline-offset);
+}
+
+/* Dialog structure and Bootstrap's modal transitions remain untouched. */
+:root[data-bizeka-theme="bizeka"] .modal-content,
+:root[data-bizeka-theme="bizeka"] .card {
+    background-color: var(--bizeka-surface-raised);
+    color: var(--bizeka-text);
+    border-color: var(--bizeka-border);
+    border-radius: var(--bizeka-radius-md);
+    box-shadow: var(--bizeka-shadow-md);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-Panel .panel,
+:root[data-bizeka-theme="bizeka"] .s-PropertyPanel .panel {
+    background-color: var(--bizeka-surface);
+    color: var(--bizeka-text);
+    border-color: var(--bizeka-border);
+    border-radius: var(--bizeka-radius-md);
+    box-shadow: var(--bizeka-shadow-md);
+}
+
+:root[data-bizeka-theme="bizeka"] .modal-footer,
+:root[data-bizeka-theme="bizeka"] .card-header,
+:root[data-bizeka-theme="bizeka"] .card-footer {
+    background-color: var(--bizeka-surface);
+    border-color: var(--bizeka-border);
+    color: var(--bizeka-text);
+}
+
+:root[data-bizeka-theme="bizeka"] .modal-backdrop {
+    background-color: var(--bizeka-overlay);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root[data-bizeka-theme="bizeka"] *,
+    :root[data-bizeka-theme="bizeka"] *::before,
+    :root[data-bizeka-theme="bizeka"] *::after {
+        scroll-behavior: auto;
+    }
+}
+
+/* Dark-mode component completion
+   Keep these rules paint-only. Serenity/Bootstrap still owns geometry and
+   behavior; the theme owns the material, text, and control edge. */
+:root[data-bizeka-theme="bizeka"] {
+    --bizeka-control-bg: var(--bizeka-surface);
+    --bizeka-control-bg-hover: var(--bizeka-surface-muted);
+    --bizeka-control-bg-focus: var(--bizeka-surface-raised);
+    --bizeka-control-text: var(--bizeka-text);
+    --bizeka-control-placeholder: var(--bizeka-text-muted);
+    --bizeka-control-border: var(--bizeka-border);
+    --bizeka-control-border-hover: var(--bizeka-border-strong);
+    --bizeka-control-border-focus: var(--bizeka-accent);
+    /* Keep light controls on the same restrained edge model as dark mode:
+       one-pixel semantic rings instead of Bootstrap's thick focus halo. */
+    --bizeka-control-focus-shadow: 0 0 0 1px color-mix(in srgb, var(--bizeka-accent) 38%, transparent),
+        0 0 7px color-mix(in srgb, var(--bizeka-accent) 9%, transparent);
+    --bizeka-control-edge: transparent;
+    --bizeka-control-edge-hover: transparent;
+    --bizeka-control-edge-focus: transparent;
+    --bizeka-control-shadow: 0 0 0 1px color-mix(in srgb, var(--bizeka-border-strong) 76%, transparent),
+        0 0 7px color-mix(in srgb, var(--bizeka-accent) 5%, transparent);
+    --bizeka-control-shadow-hover: 0 0 0 1px color-mix(in srgb, var(--bizeka-accent) 20%, var(--bizeka-border-strong)),
+        0 0 9px color-mix(in srgb, var(--bizeka-accent) 8%, transparent);
+    --bizeka-control-shadow-focus: var(--bizeka-control-focus-shadow);
+    --bizeka-focus-outline: 1px solid color-mix(in srgb, var(--bizeka-accent) 38%, transparent);
+    --bizeka-focus-outline-offset: 1px;
+    --bizeka-grid-row: var(--bizeka-surface);
+    --bizeka-grid-row-alt: var(--bizeka-surface-muted);
+
+    /* Serenity's shared controls read these aliases directly.  Keep the
+       aliases on the same semantic palette so components that do not have a
+       Bizeka-specific selector (checkboxes, upload editors, tabs, etc.) do
+       not fall back to Bootstrap's white defaults. */
+    --bs-body-bg: var(--bizeka-canvas);
+    --bs-body-color: var(--bizeka-text);
+    --bs-border-color: var(--bizeka-border);
+    --bs-border-color-translucent: color-mix(in srgb, var(--bizeka-border) 72%, transparent);
+    --s-card-bg: var(--bizeka-surface-raised);
+    --s-card-border: var(--bizeka-border);
+    --s-input-bg: var(--bizeka-control-bg);
+    --s-input-text: var(--bizeka-control-text);
+    --s-input-outline: var(--bizeka-focus-ring);
+    --s-input-outline-error: color-mix(in srgb, var(--bs-danger) 28%, transparent);
+    --s-input-readonly-bg: var(--bizeka-surface-muted);
+    --s-tabs-border: var(--bizeka-border);
+    --s-tabs-border-active: var(--bizeka-accent);
+    --s-tabs-text: var(--bizeka-text-muted);
+    --s-tabs-text-active: var(--bizeka-accent);
+    --s-tool-icon: var(--bizeka-text-muted);
+    --s-tool-button: var(--bizeka-text);
+    --s-category-title: var(--bizeka-accent);
+    --s-cell-border: var(--bizeka-border);
+    --s-cell-input-border: var(--bizeka-border);
+    --s-column-header: var(--bizeka-text-muted);
+    --s-column-header-border: var(--bizeka-border);
+    --s-pager-icon: var(--bizeka-accent);
+    --s-pager-text: var(--bizeka-text-muted);
+    --s-alt-row-bg: color-mix(in srgb, var(--bizeka-surface-muted) 70%, transparent);
+}
+
+/* In dark mode the Bootstrap border is intentionally reduced to a transparent
+   layout edge. A restrained accent glow gives the control its boundary without
+   the bright 1px light-theme line. */
+:root[data-bizeka-theme="bizeka"][data-bizeka-mode="dark"],
+:root[data-bizeka-theme="bizeka"][data-bzk-mode="dark"],
+:root[data-bizeka-theme="bizeka"][data-bzk-mode="dim"] {
+    --bizeka-control-edge: transparent;
+    --bizeka-control-edge-hover: transparent;
+    --bizeka-control-edge-focus: transparent;
+    --bizeka-control-focus-shadow: 0 0 0 1px color-mix(in srgb, var(--bizeka-accent) 46%, transparent),
+        0 0 7px color-mix(in srgb, var(--bizeka-accent) 10%, transparent);
+    --bizeka-control-shadow: 0 0 0 1px color-mix(in srgb, var(--bizeka-accent) 17%, transparent),
+        0 0 9px color-mix(in srgb, var(--bizeka-accent) 7%, transparent);
+    --bizeka-control-shadow-hover: 0 0 0 1px color-mix(in srgb, var(--bizeka-accent) 30%, transparent),
+        0 0 11px color-mix(in srgb, var(--bizeka-accent) 12%, transparent);
+    --bizeka-control-shadow-focus: var(--bizeka-control-focus-shadow);
+    --bizeka-focus-outline: 1px solid color-mix(in srgb, var(--bizeka-accent) 46%, transparent);
+    --bizeka-focus-outline-offset: 1px;
+    /* Bootstrap switches its subtle colors (alerts, badges) only under
+       data-bs-theme; derive them from the dark surface and text instead. */
+    --bs-primary-bg-subtle: color-mix(in srgb, var(--bs-primary) 16%, var(--bizeka-surface));
+    --bs-primary-border-subtle: color-mix(in srgb, var(--bs-primary) 40%, var(--bizeka-surface));
+    --bs-primary-text-emphasis: color-mix(in srgb, var(--bs-primary) 45%, var(--bizeka-text));
+    --bs-secondary-bg-subtle: color-mix(in srgb, var(--bs-secondary) 16%, var(--bizeka-surface));
+    --bs-secondary-border-subtle: color-mix(in srgb, var(--bs-secondary) 40%, var(--bizeka-surface));
+    --bs-secondary-text-emphasis: color-mix(in srgb, var(--bs-secondary) 45%, var(--bizeka-text));
+    --bs-success-bg-subtle: color-mix(in srgb, var(--bs-success) 16%, var(--bizeka-surface));
+    --bs-success-border-subtle: color-mix(in srgb, var(--bs-success) 40%, var(--bizeka-surface));
+    --bs-success-text-emphasis: color-mix(in srgb, var(--bs-success) 45%, var(--bizeka-text));
+    --bs-info-bg-subtle: color-mix(in srgb, var(--bs-info) 16%, var(--bizeka-surface));
+    --bs-info-border-subtle: color-mix(in srgb, var(--bs-info) 40%, var(--bizeka-surface));
+    --bs-info-text-emphasis: color-mix(in srgb, var(--bs-info) 45%, var(--bizeka-text));
+    --bs-warning-bg-subtle: color-mix(in srgb, var(--bs-warning) 16%, var(--bizeka-surface));
+    --bs-warning-border-subtle: color-mix(in srgb, var(--bs-warning) 40%, var(--bizeka-surface));
+    --bs-warning-text-emphasis: color-mix(in srgb, var(--bs-warning) 45%, var(--bizeka-text));
+    --bs-danger-bg-subtle: color-mix(in srgb, var(--bs-danger) 16%, var(--bizeka-surface));
+    --bs-danger-border-subtle: color-mix(in srgb, var(--bs-danger) 40%, var(--bizeka-surface));
+    --bs-danger-text-emphasis: color-mix(in srgb, var(--bs-danger) 45%, var(--bizeka-text));
+}
+
+@media (prefers-color-scheme: dark) {
+    :root[data-bizeka-theme="bizeka"]:not([data-bizeka-mode="light"]):not([data-bizeka-mode="dark"]):not([data-bzk-mode]) {
+        --bizeka-control-edge: transparent;
+        --bizeka-control-edge-hover: transparent;
+        --bizeka-control-edge-focus: transparent;
+        --bizeka-control-focus-shadow: 0 0 0 1px color-mix(in srgb, var(--bizeka-accent) 46%, transparent),
+            0 0 7px color-mix(in srgb, var(--bizeka-accent) 10%, transparent);
+        --bizeka-control-shadow: 0 0 0 1px color-mix(in srgb, var(--bizeka-accent) 17%, transparent),
+            0 0 9px color-mix(in srgb, var(--bizeka-accent) 7%, transparent);
+        --bizeka-control-shadow-hover: 0 0 0 1px color-mix(in srgb, var(--bizeka-accent) 30%, transparent),
+            0 0 11px color-mix(in srgb, var(--bizeka-accent) 12%, transparent);
+        --bizeka-control-shadow-focus: var(--bizeka-control-focus-shadow);
+        --bizeka-focus-outline: 1px solid color-mix(in srgb, var(--bizeka-accent) 46%, transparent);
+        --bizeka-focus-outline-offset: 1px;
+        /* Bootstrap switches its subtle colors (alerts, badges) only under
+           data-bs-theme; derive them from the dark surface and text instead. */
+        --bs-primary-bg-subtle: color-mix(in srgb, var(--bs-primary) 16%, var(--bizeka-surface));
+        --bs-primary-border-subtle: color-mix(in srgb, var(--bs-primary) 40%, var(--bizeka-surface));
+        --bs-primary-text-emphasis: color-mix(in srgb, var(--bs-primary) 45%, var(--bizeka-text));
+        --bs-secondary-bg-subtle: color-mix(in srgb, var(--bs-secondary) 16%, var(--bizeka-surface));
+        --bs-secondary-border-subtle: color-mix(in srgb, var(--bs-secondary) 40%, var(--bizeka-surface));
+        --bs-secondary-text-emphasis: color-mix(in srgb, var(--bs-secondary) 45%, var(--bizeka-text));
+        --bs-success-bg-subtle: color-mix(in srgb, var(--bs-success) 16%, var(--bizeka-surface));
+        --bs-success-border-subtle: color-mix(in srgb, var(--bs-success) 40%, var(--bizeka-surface));
+        --bs-success-text-emphasis: color-mix(in srgb, var(--bs-success) 45%, var(--bizeka-text));
+        --bs-info-bg-subtle: color-mix(in srgb, var(--bs-info) 16%, var(--bizeka-surface));
+        --bs-info-border-subtle: color-mix(in srgb, var(--bs-info) 40%, var(--bizeka-surface));
+        --bs-info-text-emphasis: color-mix(in srgb, var(--bs-info) 45%, var(--bizeka-text));
+        --bs-warning-bg-subtle: color-mix(in srgb, var(--bs-warning) 16%, var(--bizeka-surface));
+        --bs-warning-border-subtle: color-mix(in srgb, var(--bs-warning) 40%, var(--bizeka-surface));
+        --bs-warning-text-emphasis: color-mix(in srgb, var(--bs-warning) 45%, var(--bizeka-text));
+        --bs-danger-bg-subtle: color-mix(in srgb, var(--bs-danger) 16%, var(--bizeka-surface));
+        --bs-danger-border-subtle: color-mix(in srgb, var(--bs-danger) 40%, var(--bizeka-surface));
+        --bs-danger-text-emphasis: color-mix(in srgb, var(--bs-danger) 45%, var(--bizeka-text));
+    }
+}
+
+/* Components supplied by Serenity's shared theme intentionally use the
+   --s-* aliases above.  These explicit edges cover Bootstrap's more specific
+   form-check selector and the legacy Serenity checkbox span. */
+:root[data-bizeka-theme="bizeka"] input[type="checkbox"],
+:root[data-bizeka-theme="bizeka"] .form-check-input {
+    width: 18px !important;
+    /* Serenity gives every .field .editor flex: 1 1 auto; a checkbox must not grow. */
+    flex: 0 0 auto !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
+    border-radius: 4px !important;
+    border: 1.5px solid color-mix(in srgb, var(--bizeka-text-muted) 60%, var(--bizeka-surface)) !important;
+    background-color: var(--bizeka-control-bg) !important;
+    color: var(--bizeka-control-text);
+    cursor: pointer;
+    vertical-align: middle;
+    appearance: none;
+    -webkit-appearance: none;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    margin: 0;
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+:root[data-bizeka-theme="bizeka"] input[type="radio"] {
+    width: 18px !important;
+    flex: 0 0 auto !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
+    border-radius: 50% !important;
+    border: 1.5px solid color-mix(in srgb, var(--bizeka-text-muted) 60%, var(--bizeka-surface)) !important;
+    background-color: var(--bizeka-control-bg) !important;
+    cursor: pointer;
+    vertical-align: middle;
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+:root[data-bizeka-theme="bizeka"] .check-box {
+    background-color: var(--bizeka-control-bg);
+    border-color: var(--bizeka-control-border) !important;
+    color: var(--bizeka-control-text);
+}
+
+:root[data-bizeka-theme="bizeka"] input[type="checkbox"]:checked,
+:root[data-bizeka-theme="bizeka"] .form-check-input:checked {
+    background-color: var(--bizeka-accent) !important;
+    border-color: var(--bizeka-accent) !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m4 10 4 4 8-8'/%3e%3c/svg%3e") !important;
+    background-size: 100% 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+:root[data-bizeka-theme="bizeka"] input[type="radio"]:checked {
+    background-color: var(--bizeka-accent) !important;
+    border-color: var(--bizeka-accent) !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e") !important;
+    background-size: 100% 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .check-box.checked,
+:root[data-bizeka-theme="bizeka"] .check-box.partial,
+:root[data-bizeka-theme="bizeka"] .check-box.checked.partial {
+    background-color: var(--bizeka-accent);
+    border-color: var(--bizeka-accent) !important;
+}
+
+:root[data-bizeka-theme="bizeka"] input[type="checkbox"]:focus,
+:root[data-bizeka-theme="bizeka"] input[type="radio"]:focus,
+:root[data-bizeka-theme="bizeka"] .form-check-input:focus,
+:root[data-bizeka-theme="bizeka"] .check-box:focus-visible {
+    border-color: var(--bizeka-control-border-focus) !important;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--bizeka-accent) 25%, transparent) !important;
+    outline: none !important;
+}
+
+/* Native Serenity editors and quick filters. The exclusions preserve the
+   browser/Serenity paint for checkboxes, radios, hidden Select2 inputs, and
+   file inputs. */
+:root[data-bizeka-theme="bizeka"] input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not([type="file"]):not(.select2-offscreen):not(:disabled):not([readonly]),
+:root[data-bizeka-theme="bizeka"] textarea:not(:disabled):not([readonly]),
+:root[data-bizeka-theme="bizeka"] .form-control:not(:disabled):not([readonly]),
+:root[data-bizeka-theme="bizeka"] .s-QuickSearchInput:not(:disabled):not([readonly]) {
+    border: 1px solid var(--bizeka-control-edge) !important;
+    background-color: var(--bizeka-control-bg);
+    color: var(--bizeka-control-text);
+    box-shadow: var(--bizeka-control-shadow);
+}
+
+:root[data-bizeka-theme="bizeka"] input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not([type="file"]):not(.select2-offscreen):not(:disabled):not([readonly]):hover,
+:root[data-bizeka-theme="bizeka"] textarea:not(:disabled):not([readonly]):hover,
+:root[data-bizeka-theme="bizeka"] .form-control:not(:disabled):not([readonly]):hover,
+:root[data-bizeka-theme="bizeka"] .s-QuickSearchInput:not(:disabled):not([readonly]):hover {
+    background-color: var(--bizeka-control-bg-hover);
+    border-color: var(--bizeka-control-edge-hover) !important;
+    color: var(--bizeka-control-text);
+    box-shadow: var(--bizeka-control-shadow-hover);
+}
+
+:root[data-bizeka-theme="bizeka"] input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not([type="file"]):not(.select2-offscreen):not(:disabled):focus,
+:root[data-bizeka-theme="bizeka"] textarea:not(:disabled):focus,
+:root[data-bizeka-theme="bizeka"] .form-control:not(:disabled):focus,
+:root[data-bizeka-theme="bizeka"] .s-QuickSearchInput:not(:disabled):focus {
+    background-color: var(--bizeka-control-bg-focus);
+    color: var(--bizeka-control-text);
+    border-color: var(--bizeka-control-edge-focus) !important;
+    box-shadow: var(--bizeka-control-shadow-focus) !important;
+}
+
+:root[data-bizeka-theme="bizeka"] input::placeholder,
+:root[data-bizeka-theme="bizeka"] textarea::placeholder,
+:root[data-bizeka-theme="bizeka"] .form-control::placeholder,
+:root[data-bizeka-theme="bizeka"] .s-QuickSearchInput::placeholder {
+    color: var(--bizeka-control-placeholder);
+    opacity: 1;
+}
+
+:root[data-bizeka-theme="bizeka"] select option,
+:root[data-bizeka-theme="bizeka"] optgroup {
+    background-color: var(--bizeka-control-bg);
+    color: var(--bizeka-control-text);
+}
+
+:root[data-bizeka-theme="bizeka"] input:disabled,
+:root[data-bizeka-theme="bizeka"] select:disabled,
+:root[data-bizeka-theme="bizeka"] textarea:disabled,
+:root[data-bizeka-theme="bizeka"] .form-control:disabled,
+:root[data-bizeka-theme="bizeka"] input[readonly],
+:root[data-bizeka-theme="bizeka"] textarea[readonly],
+:root[data-bizeka-theme="bizeka"] .form-control[readonly] {
+    border: 1px solid var(--bizeka-border) !important;
+    background-color: var(--bizeka-surface-muted);
+    color: var(--bizeka-text-muted);
+    box-shadow: none;
+}
+
+/* Select2 legacy (Serenity 8/9) and modern markup. The widget host is only a
+   layout wrapper; the actual choice/selection owns the single visible edge.
+   Keeping one border owner avoids the double bright line produced when both
+   the host and its inner control receive the vendor border. */
+:root[data-bizeka-theme="bizeka"] .select2-container {
+    background: transparent;
+    border: 0 !important;
+    border-radius: var(--bizeka-radius-sm);
+    box-shadow: none;
+}
+
+:root[data-bizeka-theme="bizeka"] .select2-container .select2-choice,
+:root[data-bizeka-theme="bizeka"] .select2-container .select2-choices,
+:root[data-bizeka-theme="bizeka"] .select2-container .select2-selection {
+    border: 1px solid var(--bizeka-control-edge) !important;
+    background-color: var(--bizeka-control-bg);
+    color: var(--bizeka-control-text);
+    border-radius: var(--bizeka-radius-sm);
+    background-image: none;
+    box-shadow: var(--bizeka-control-shadow);
+}
+
+:root[data-bizeka-theme="bizeka"] .select2-search input,
+:root[data-bizeka-theme="bizeka"] .select2-search__field {
+    border: 1px solid var(--bizeka-control-edge) !important;
+    background-color: var(--bizeka-control-bg);
+    color: var(--bizeka-control-text);
+    border-radius: var(--bizeka-radius-sm);
+    background-image: none;
+    box-shadow: var(--bizeka-control-shadow);
+}
+
+:root[data-bizeka-theme="bizeka"] .select2-container .select2-choice:hover,
+:root[data-bizeka-theme="bizeka"] .select2-container .select2-choices:hover,
+:root[data-bizeka-theme="bizeka"] .select2-container .select2-selection:hover,
+:root[data-bizeka-theme="bizeka"] .select2-search input:hover,
+:root[data-bizeka-theme="bizeka"] .select2-search__field:hover {
+    background-color: var(--bizeka-control-bg-hover);
+    border-color: var(--bizeka-control-edge-hover) !important;
+    box-shadow: var(--bizeka-control-shadow-hover);
+}
+
+:root[data-bizeka-theme="bizeka"] .select2-container--focus .select2-selection,
+:root[data-bizeka-theme="bizeka"] .select2-container--open .select2-selection,
+:root[data-bizeka-theme="bizeka"] .select2-container-active .select2-choice,
+:root[data-bizeka-theme="bizeka"] .select2-container-active .select2-selection,
+:root[data-bizeka-theme="bizeka"] .select2-container.select2-dropdown-open .select2-choice,
+:root[data-bizeka-theme="bizeka"] .select2-container.select2-dropdown-open .select2-selection,
+:root[data-bizeka-theme="bizeka"] .select2-container .select2-choice:focus,
+:root[data-bizeka-theme="bizeka"] .select2-search input:focus,
+:root[data-bizeka-theme="bizeka"] .select2-search__field:focus {
+    background-color: var(--bizeka-control-bg-focus);
+    color: var(--bizeka-control-text);
+    border-color: var(--bizeka-control-edge-focus) !important;
+    box-shadow: var(--bizeka-control-shadow-focus) !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .select2-container--disabled .select2-choice,
+:root[data-bizeka-theme="bizeka"] .select2-container--disabled .select2-selection,
+:root[data-bizeka-theme="bizeka"] .select2-container.select2-container-disabled .select2-choice,
+:root[data-bizeka-theme="bizeka"] .select2-container.select2-container-disabled .select2-selection {
+    background: var(--bizeka-surface-muted) !important;
+    border: 1px solid var(--bizeka-border) !important;
+    color: var(--bizeka-text-muted) !important;
+    box-shadow: none;
+}
+
+:root[data-bizeka-theme="bizeka"] .select2-container .select2-chosen,
+:root[data-bizeka-theme="bizeka"] .select2-container .select2-selection__rendered,
+:root[data-bizeka-theme="bizeka"] .select2-container .select2-search-choice,
+:root[data-bizeka-theme="bizeka"] .select2-container .select2-search-choice > div {
+    color: var(--bizeka-control-text);
+}
+
+/* Multi-select chips (for example TaskItem assignees) are separate boxes
+   inside the Select2 control. Paint their edge and inset highlight explicitly;
+   the common theme otherwise leaves a bright border/shadow on dark surfaces. */
+:root[data-bizeka-theme="bizeka"] .select2-container .select2-search-choice {
+    background: var(--bizeka-control-bg) !important;
+    border: 1px solid var(--bizeka-control-edge) !important;
+    box-shadow: var(--bizeka-control-shadow),
+        inset 0 1px 0 color-mix(in srgb, var(--bizeka-text) 8%, transparent),
+        0 1px 1px color-mix(in srgb, #000 28%, transparent);
+}
+
+:root[data-bizeka-theme="bizeka"] .select2-container .select2-search-choice:hover,
+:root[data-bizeka-theme="bizeka"] .select2-container .select2-search-choice-focus {
+    background: var(--bizeka-accent-soft) !important;
+    border-color: var(--bizeka-control-edge-focus) !important;
+    box-shadow: var(--bizeka-control-shadow-hover);
+}
+
+:root[data-bizeka-theme="bizeka"] .select2-container .select2-search-choice-close {
+    color: var(--bizeka-text-muted) !important;
+    opacity: 1;
+}
+
+:root[data-bizeka-theme="bizeka"] .select2-container .select2-search-choice-close:hover {
+    color: var(--bizeka-accent) !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .select2-container .select2-selection__placeholder {
+    color: var(--bizeka-control-placeholder);
+}
+
+:root[data-bizeka-theme="bizeka"] .select2-container .select2-arrow,
+:root[data-bizeka-theme="bizeka"] .select2-container .select2-selection__arrow,
+:root[data-bizeka-theme="bizeka"] .select2-container .select2-selection__clear {
+    color: var(--bizeka-text-muted);
+}
+
+:root[data-bizeka-theme="bizeka"] .select2-drop,
+:root[data-bizeka-theme="bizeka"] .select2-dropdown,
+:root[data-bizeka-theme="bizeka"] .select2-container--open .select2-dropdown,
+:root[data-bizeka-theme="bizeka"] .select2-results,
+:root[data-bizeka-theme="bizeka"] .select2-results__options {
+    background-color: var(--bizeka-surface-raised);
+    color: var(--bizeka-control-text);
+    border-color: var(--bizeka-border-strong);
+}
+
+:root[data-bizeka-theme="bizeka"] .select2-results .select2-result-label,
+:root[data-bizeka-theme="bizeka"] .select2-results__option {
+    background-color: transparent;
+    color: var(--bizeka-control-text);
+}
+
+:root[data-bizeka-theme="bizeka"] .select2-results .select2-result-label:hover,
+:root[data-bizeka-theme="bizeka"] .select2-results__option--highlighted[aria-selected],
+:root[data-bizeka-theme="bizeka"] .select2-results__option--highlighted[aria-selected="true"] {
+    background-color: var(--bizeka-accent-soft);
+    color: var(--bizeka-text);
+}
+
+:root[data-bizeka-theme="bizeka"] .select2-results .select2-selected,
+:root[data-bizeka-theme="bizeka"] .select2-results__option[aria-selected="true"] {
+    background-color: var(--bizeka-accent-soft);
+    color: var(--bizeka-text);
+}
+
+/* SlickGrid paint and row parity. Keep geometry/overflow in Serenity's theme;
+   these rules only provide the surfaces, text and edges. */
+:root[data-bizeka-theme="bizeka"] .s-DataGrid,
+:root[data-bizeka-theme="bizeka"] .slickgrid-container,
+:root[data-bizeka-theme="bizeka"] .slick-viewport {
+    background-color: var(--bizeka-surface);
+    color: var(--bizeka-text);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-DataGrid .slick-header,
+:root[data-bizeka-theme="bizeka"] .s-DataGrid .slick-header-columns,
+:root[data-bizeka-theme="bizeka"] .s-DataGrid .slick-pg {
+    background-color: var(--bizeka-surface-muted);
+    border-color: var(--bizeka-border);
+    color: var(--bizeka-text-muted);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-DataGrid .slick-header-column,
+:root[data-bizeka-theme="bizeka"] .s-DataGrid .slick-cell {
+    border-color: var(--bizeka-border);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-DataGrid .slick-row,
+:root[data-bizeka-theme="bizeka"] .s-DataGrid .slick-row .slick-cell {
+    background-color: var(--bizeka-grid-row);
+    color: var(--bizeka-text);
+    border-color: var(--bizeka-border);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-DataGrid .slick-row:nth-of-type(even),
+:root[data-bizeka-theme="bizeka"] .s-DataGrid .slick-row:nth-of-type(even) .slick-cell {
+    background-color: var(--bizeka-grid-row-alt);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-DataGrid a,
+:root[data-bizeka-theme="bizeka"] .s-DataGrid .s-EditLink {
+    color: var(--bizeka-accent);
+}
+
+/* Neutral toolbar and dialog buttons retain a visible edge in dark mode. */
+:root[data-bizeka-theme="bizeka"] .s-Toolbar,
+:root[data-bizeka-theme="bizeka"] .grid-toolbar {
+    background-color: var(--bizeka-surface);
+    border-color: var(--bizeka-border);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-Toolbar .tool-button:not(.add-button):not(.save-and-close-button):not(.delete-button),
+:root[data-bizeka-theme="bizeka"] .btn-default,
+:root[data-bizeka-theme="bizeka"] .btn-secondary,
+:root[data-bizeka-theme="bizeka"] .btn-light,
+:root[data-bizeka-theme="bizeka"] .ui-button:not(.btn-primary):not(.btn-danger),
+:root[data-bizeka-theme="bizeka"] .ui-dialog-buttonpane button:not(.btn-primary):not(.btn-danger) {
+    background-color: var(--bizeka-surface-raised);
+    color: var(--bizeka-text);
+    border-color: var(--bizeka-border-strong);
+    box-shadow: none;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-Toolbar .tool-button:not(.add-button):not(.save-and-close-button):not(.delete-button):hover,
+:root[data-bizeka-theme="bizeka"] .btn-default:hover,
+:root[data-bizeka-theme="bizeka"] .btn-secondary:hover,
+:root[data-bizeka-theme="bizeka"] .btn-light:hover,
+:root[data-bizeka-theme="bizeka"] .ui-button:not(.btn-primary):not(.btn-danger):hover,
+:root[data-bizeka-theme="bizeka"] .ui-dialog-buttonpane button:not(.btn-primary):not(.btn-danger):hover {
+    background-color: var(--bizeka-accent-soft);
+    color: var(--bizeka-text);
+    border-color: var(--bizeka-accent);
+}
+
+/* Delete is intentionally excluded from the neutral group above so its
+   danger icon can stay red.  The label still needs the theme text color and a
+   dark-mode surface; otherwise Bootstrap's inherited dark label disappears. */
+:root[data-bizeka-theme="bizeka"] .s-Toolbar .tool-button.delete-button,
+:root[data-bizeka-theme="bizeka"] .s-Toolbar .tool-button.delete-button .button-inner {
+    color: var(--bizeka-text) !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-Toolbar .tool-button.delete-button {
+    background-color: var(--bizeka-surface-raised);
+    border-color: var(--bizeka-border-strong);
+    box-shadow: none;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-Toolbar .tool-button.delete-button .button-inner {
+    background: transparent !important;
+    border: 0 !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-Toolbar .tool-button.delete-button:hover,
+:root[data-bizeka-theme="bizeka"] .s-Toolbar .tool-button.delete-button:focus-visible {
+    background-color: var(--bizeka-accent-soft);
+    color: var(--bizeka-text);
+    border-color: var(--bizeka-accent);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-Toolbar .tool-button.delete-button.disabled,
+:root[data-bizeka-theme="bizeka"] .s-Toolbar .tool-button.delete-button[disabled] {
+    background: var(--bizeka-surface-muted) !important;
+    color: var(--bizeka-text-muted) !important;
+    border-color: var(--bizeka-border-strong) !important;
+    box-shadow: none !important;
+    opacity: 1;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-Toolbar .tool-button.delete-button .button-inner::before {
+    color: var(--bs-danger);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-Toolbar .tool-button.delete-button .button-inner > i {
+    color: var(--bs-danger) !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-Toolbar .tool-button.apply-changes-button .button-inner > i {
+    color: var(--bizeka-accent) !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-Toolbar .tool-button.add-button .button-inner > i,
+:root[data-bizeka-theme="bizeka"] .s-Toolbar .tool-button.save-and-close-button .button-inner > i,
+:root[data-bizeka-theme="bizeka"] .s-Toolbar .tool-button.add-button .button-inner::before,
+:root[data-bizeka-theme="bizeka"] .s-Toolbar .tool-button.save-and-close-button .button-inner::before {
+    color: var(--bizeka-accent-contrast) !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .btn-danger,
+:root[data-bizeka-theme="bizeka"] .btn-success,
+:root[data-bizeka-theme="bizeka"] .btn-warning,
+:root[data-bizeka-theme="bizeka"] .btn-info {
+    border-color: color-mix(in srgb, currentColor 42%, var(--bizeka-border-strong));
+}
+
+/* File/image upload editors are cards in Serenity's theme.  Paint their card,
+   list, progress and file tile from the same surface tokens so an empty upload
+   area never renders as a white rectangle in dark mode. */
+:root[data-bizeka-theme="bizeka"] .s-ImageUploadEditor,
+:root[data-bizeka-theme="bizeka"] .s-MultipleImageUploadEditor,
+:root[data-bizeka-theme="bizeka"] .s-FileUploadEditor,
+:root[data-bizeka-theme="bizeka"] .s-ImageUploadEditor ul,
+:root[data-bizeka-theme="bizeka"] .s-MultipleImageUploadEditor ul,
+:root[data-bizeka-theme="bizeka"] .s-FileUploadEditor > ul.file-items,
+:root[data-bizeka-theme="bizeka"] .file-items,
+:root[data-bizeka-theme="bizeka"] .file-item {
+    background: var(--bizeka-surface-raised) !important;
+    color: var(--bizeka-text);
+    border-color: var(--bizeka-border);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-FileUploadEditor > ul.file-items:empty,
+:root[data-bizeka-theme="bizeka"] .s-ImageUploadEditor > ul.file-items:empty,
+:root[data-bizeka-theme="bizeka"] .s-MultipleImageUploadEditor > ul.file-items:empty {
+    background-color: var(--bizeka-surface-raised) !important;
+    background-image: none !important;
+    border-color: var(--bizeka-border) !important;
+    box-shadow: none !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-FileUploadEditor > .s-Toolbar,
+:root[data-bizeka-theme="bizeka"] .s-ImageUploadEditor > .s-Toolbar,
+:root[data-bizeka-theme="bizeka"] .s-MultipleImageUploadEditor > .s-Toolbar {
+    background: var(--bizeka-surface-muted) !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .file-item .filename,
+:root[data-bizeka-theme="bizeka"] .file-item .download a,
+:root[data-bizeka-theme="bizeka"] .file-item .thumb {
+    color: var(--bizeka-text);
+}
+
+:root[data-bizeka-theme="bizeka"] .upload-progress {
+    background: var(--bizeka-surface-muted) !important;
+    border-color: var(--bizeka-border-strong);
+}
+
+:root[data-bizeka-theme="bizeka"] .upload-progress div {
+    background-color: var(--bizeka-accent);
+}
+
+/* Lookup inplace actions are anchors, not toolbar buttons.  Their default
+   border/icon variables can remain light when the host stylesheet is loaded
+   after Serenity's common theme, so pin both the surface and pseudo-icon. */
+:root[data-bizeka-theme="bizeka"] .inplace-button,
+:root[data-bizeka-theme="bizeka"] .inplace-button b,
+:root[data-bizeka-theme="bizeka"] .inplace-button b::before {
+    background: var(--bizeka-control-bg) !important;
+    color: var(--bizeka-text-muted) !important;
+    border-color: var(--bizeka-control-border) !important;
+    box-shadow: none !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .inplace-button {
+    border: 1px solid var(--bizeka-control-border) !important;
+    background-image: none !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .inplace-button:hover,
+:root[data-bizeka-theme="bizeka"] .inplace-button:focus-visible,
+:root[data-bizeka-theme="bizeka"] .inplace-button.edit:hover,
+:root[data-bizeka-theme="bizeka"] .inplace-button.edit:focus-visible {
+    background: var(--bizeka-accent-soft) !important;
+    color: var(--bizeka-accent) !important;
+    border-color: var(--bizeka-accent) !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .inplace-button:focus-visible,
+:root[data-bizeka-theme="bizeka"] .inplace-button.edit:focus-visible {
+    box-shadow: var(--bizeka-control-focus-shadow) !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .inplace-button[disabled],
+:root[data-bizeka-theme="bizeka"] .inplace-button.disabled {
+    background: var(--bizeka-surface-muted) !important;
+    color: var(--bizeka-text-muted) !important;
+    border-color: var(--bizeka-border) !important;
+    opacity: .72;
+}
+
+/* Serenity jQuery UI and Bootstrap panel/dialog surfaces. */
+:root[data-bizeka-theme="bizeka"] .ui-dialog,
+:root[data-bizeka-theme="bizeka"] .ui-dialog-content,
+:root[data-bizeka-theme="bizeka"] .s-Dialog,
+:root[data-bizeka-theme="bizeka"] .s-DialogContent,
+:root[data-bizeka-theme="bizeka"] .s-Panel,
+:root[data-bizeka-theme="bizeka"] .s-PropertyPanel,
+:root[data-bizeka-theme="bizeka"] .panel,
+:root[data-bizeka-theme="bizeka"] .panel-body {
+    background-color: var(--bizeka-surface);
+    color: var(--bizeka-text);
+    border-color: var(--bizeka-border);
+}
+
+:root[data-bizeka-theme="bizeka"] .ui-dialog-titlebar,
+:root[data-bizeka-theme="bizeka"] .panel-titlebar,
+:root[data-bizeka-theme="bizeka"] .s-Panel .panel-titlebar,
+:root[data-bizeka-theme="bizeka"] .s-PropertyPanel .panel-titlebar,
+:root[data-bizeka-theme="bizeka"] .modal-header {
+    background-color: var(--bizeka-surface);
+    color: var(--bizeka-text);
+    border-color: var(--bizeka-border);
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-Panel .panel-body,
+:root[data-bizeka-theme="bizeka"] .s-PropertyPanel .panel-body,
+:root[data-bizeka-theme="bizeka"] .s-Panel .s-Toolbar,
+:root[data-bizeka-theme="bizeka"] .s-PropertyPanel .s-Toolbar,
+:root[data-bizeka-theme="bizeka"] .s-Panel .s-Form,
+:root[data-bizeka-theme="bizeka"] .s-PropertyPanel .s-Form {
+    background-color: var(--bizeka-surface);
+}
+
+:root[data-bizeka-theme="bizeka"] .ui-dialog-title,
+:root[data-bizeka-theme="bizeka"] .modal-title,
+:root[data-bizeka-theme="bizeka"] .panel-title {
+    color: var(--bizeka-text);
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding-right: 12px !important;
+}
+
+/* Close controls: sleek, rounded, shared theme standard with soft danger hover */
+:root[data-bizeka-theme="bizeka"] .ui-dialog .ui-dialog-titlebar-close,
+:root[data-bizeka-theme="bizeka"] .ui-dialog-titlebar-close,
+:root[data-bizeka-theme="bizeka"] .panel-titlebar-close,
+:root[data-bizeka-theme="bizeka"] .s-Panel .panel-titlebar-close,
+:root[data-bizeka-theme="bizeka"] .s-PropertyPanel .panel-titlebar-close,
+:root[data-bizeka-theme="bizeka"] .modal-header .btn-close,
+:root[data-bizeka-theme="bizeka"] .modal-header button.close,
+:root[data-bizeka-theme="bizeka"] button.close {
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0 !important;
+    position: static !important;
+    margin: 0 0 0 auto !important;
+    padding: 0;
+    border: 1px solid var(--bizeka-border);
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--bizeka-surface-raised) 92%, transparent);
+    background-image: none;
+    color: var(--bizeka-text-muted);
+    opacity: 1;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    font-size: 0;
+    line-height: 1;
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root[data-bizeka-theme="bizeka"] .ui-dialog .ui-dialog-titlebar-close::before,
+:root[data-bizeka-theme="bizeka"] .ui-dialog-titlebar-close::before,
+:root[data-bizeka-theme="bizeka"] .panel-titlebar-close::before,
+:root[data-bizeka-theme="bizeka"] .s-Panel .panel-titlebar-close::before,
+:root[data-bizeka-theme="bizeka"] .s-PropertyPanel .panel-titlebar-close::before,
+:root[data-bizeka-theme="bizeka"] .modal-header .btn-close::before,
+:root[data-bizeka-theme="bizeka"] .modal-header button.close::before,
+:root[data-bizeka-theme="bizeka"] button.close::before {
+    content: "\00d7";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 0.85;
+    color: inherit;
+    pointer-events: none;
+}
+
+:root[data-bizeka-theme="bizeka"] .ui-dialog .ui-dialog-titlebar-close > *,
+:root[data-bizeka-theme="bizeka"] .ui-dialog-titlebar-close > *,
+:root[data-bizeka-theme="bizeka"] .panel-titlebar-close > *,
+:root[data-bizeka-theme="bizeka"] .s-Panel .panel-titlebar-close > *,
+:root[data-bizeka-theme="bizeka"] .s-PropertyPanel .panel-titlebar-close > *,
+:root[data-bizeka-theme="bizeka"] .modal-header .btn-close > *,
+:root[data-bizeka-theme="bizeka"] .modal-header button.close > * {
+    display: none !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .ui-dialog .ui-dialog-titlebar-close:hover,
+:root[data-bizeka-theme="bizeka"] .ui-dialog-titlebar-close:hover,
+:root[data-bizeka-theme="bizeka"] .panel-titlebar-close:hover,
+:root[data-bizeka-theme="bizeka"] .s-Panel .panel-titlebar-close:hover,
+:root[data-bizeka-theme="bizeka"] .s-PropertyPanel .panel-titlebar-close:hover,
+:root[data-bizeka-theme="bizeka"] .modal-header .btn-close:hover,
+:root[data-bizeka-theme="bizeka"] .modal-header button.close:hover,
+:root[data-bizeka-theme="bizeka"] button.close:hover {
+    border-color: color-mix(in srgb, #ef4444 35%, var(--bizeka-border));
+    background: color-mix(in srgb, #ef4444 14%, var(--bizeka-surface-raised));
+    color: #ef4444;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.18);
+    transform: translateY(-1px);
+}
+
+:root[data-bizeka-theme="bizeka"] .ui-dialog .ui-dialog-titlebar-close:active,
+:root[data-bizeka-theme="bizeka"] .ui-dialog-titlebar-close:active,
+:root[data-bizeka-theme="bizeka"] .panel-titlebar-close:active,
+:root[data-bizeka-theme="bizeka"] .s-Panel .panel-titlebar-close:active,
+:root[data-bizeka-theme="bizeka"] .s-PropertyPanel .panel-titlebar-close:active,
+:root[data-bizeka-theme="bizeka"] .modal-header .btn-close:active,
+:root[data-bizeka-theme="bizeka"] .modal-header button.close:active,
+:root[data-bizeka-theme="bizeka"] button.close:active {
+    transform: scale(0.94);
+    background: color-mix(in srgb, #ef4444 24%, var(--bizeka-surface-raised));
+    color: #ef4444;
+}
+
+/* Universal text-muted, pre, code for high-contrast dark/light parity */
+:root[data-bizeka-theme="bizeka"] .text-muted {
+    color: var(--bizeka-text-muted) !important;
+}
+
+:root[data-bizeka-theme="bizeka"] pre {
+    background-color: var(--bizeka-surface-muted) !important;
+    color: var(--bizeka-text) !important;
+    border: 1px solid var(--bizeka-border) !important;
+    border-radius: var(--bizeka-radius-sm);
+}
+
+:root[data-bizeka-theme="bizeka"] code {
+    color: var(--bizeka-accent);
+    font-family: Consolas, "SF Mono", Monaco, "Courier New", monospace;
+}
+
+:root[data-bizeka-theme="bizeka"] pre code {
+    color: var(--bizeka-text) !important;
+    background: transparent !important;
+}
+
+/* Dropdown and scrollbar completion -------------------------------------- */
+:root[data-bizeka-theme="bizeka"] {
+    --bizeka-scrollbar-size: 10px;
+    --bizeka-scrollbar-track: var(--bizeka-canvas);
+    --bizeka-scrollbar-thumb: var(--bizeka-border-strong);
+    --bizeka-scrollbar-thumb-hover: var(--bizeka-accent);
+    --bizeka-dropdown-bg: var(--bizeka-surface-raised);
+    --bizeka-dropdown-border: var(--bizeka-border);
+    --bizeka-dropdown-item-hover: var(--bizeka-accent-soft);
+}
+
+:root[data-bizeka-theme="bizeka"] .dropdown-menu,
+:root[data-bizeka-theme="bizeka"] .s-language-selection-menu {
+    background-color: var(--bizeka-dropdown-bg);
+    background-image: none;
+    border: 1px solid var(--bizeka-dropdown-border);
+    color: var(--bizeka-text);
+    box-shadow: var(--bizeka-shadow-md);
+}
+
+:root[data-bizeka-theme="bizeka"] .dropdown-menu .dropdown-item,
+:root[data-bizeka-theme="bizeka"] .s-language-selection-menu a,
+:root[data-bizeka-theme="bizeka"] .s-user-profile-menu a,
+:root[data-bizeka-theme="bizeka"] .s-user-profile-menu .dropdown-item {
+    background-color: transparent;
+    color: var(--bizeka-text);
+}
+
+:root[data-bizeka-theme="bizeka"] .dropdown-menu .dropdown-item:hover,
+:root[data-bizeka-theme="bizeka"] .dropdown-menu .dropdown-item:focus,
+:root[data-bizeka-theme="bizeka"] .s-language-selection-menu a:hover,
+:root[data-bizeka-theme="bizeka"] .s-language-selection-menu a:focus,
+:root[data-bizeka-theme="bizeka"] .s-user-profile-menu a:hover,
+:root[data-bizeka-theme="bizeka"] .s-user-profile-menu a:focus {
+    background-color: var(--bizeka-dropdown-item-hover);
+    color: var(--bizeka-text);
+}
+
+:root[data-bizeka-theme="bizeka"] .dropdown-menu .dropdown-item.active,
+:root[data-bizeka-theme="bizeka"] .dropdown-menu .dropdown-item:active,
+:root[data-bizeka-theme="bizeka"] .s-language-selection-menu a.active,
+:root[data-bizeka-theme="bizeka"] .s-language-selection-menu a[aria-current="true"] {
+    background-color: var(--bizeka-accent-soft);
+    color: var(--bizeka-accent);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-language-selection-menu .divider,
+:root[data-bizeka-theme="bizeka"] .s-user-profile-menu .border-bottom {
+    border-color: var(--bizeka-border) !important;
+}
+
+:root[data-bizeka-theme="bizeka"] *,
+:root[data-bizeka-theme="bizeka"] *::before,
+:root[data-bizeka-theme="bizeka"] *::after {
+    scrollbar-color: var(--bizeka-scrollbar-thumb) var(--bizeka-scrollbar-track);
+    scrollbar-width: thin;
+}
+
+:root[data-bizeka-theme="bizeka"] *::-webkit-scrollbar {
+    width: var(--bizeka-scrollbar-size);
+    height: var(--bizeka-scrollbar-size);
+}
+
+:root[data-bizeka-theme="bizeka"] *::-webkit-scrollbar-track {
+    background: var(--bizeka-scrollbar-track);
+}
+
+:root[data-bizeka-theme="bizeka"] *::-webkit-scrollbar-thumb {
+    background: var(--bizeka-scrollbar-thumb);
+    border: 2px solid var(--bizeka-scrollbar-track);
+    border-radius: var(--bizeka-radius-lg);
+    box-shadow: none;
+}
+
+:root[data-bizeka-theme="bizeka"] *::-webkit-scrollbar-thumb:hover {
+    background: var(--bizeka-scrollbar-thumb-hover);
+}
+
+:root[data-bizeka-theme="bizeka"] *::-webkit-scrollbar-corner {
+    background: var(--bizeka-scrollbar-track);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-DataGrid .slick-viewport,
+:root[data-bizeka-theme="bizeka"] .s-DataGrid .slick-container,
+:root[data-bizeka-theme="bizeka"] .s-DataGrid .slick-header-columns {
+    scrollbar-color: var(--bizeka-scrollbar-thumb) var(--bizeka-scrollbar-track);
+}
+
+
+/* Profile dropdown and select edge completion */
+:root[data-bizeka-theme="bizeka"] .s-user-profile-menu,
+:root[data-bizeka-theme="bizeka"] .s-user-profile-menu .s-user-card {
+    background: var(--bizeka-dropdown-bg);
+    color: var(--bizeka-text);
+    border-color: var(--bizeka-dropdown-border);
+    box-shadow: var(--bizeka-shadow-md);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-user-profile-menu .s-user-avatar,
+:root[data-bizeka-theme="bizeka"] .s-user-profile-menu .icon,
+:root[data-bizeka-theme="bizeka"] .s-user-profile-menu .fa,
+:root[data-bizeka-theme="bizeka"] .s-user-profile-menu em {
+    color: var(--bizeka-text);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-user-profile-menu .s-user-info {
+    color: var(--bizeka-text-muted);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-user-profile-menu > a {
+    background: transparent;
+    color: var(--bizeka-text);
+    border-color: var(--bizeka-border);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-user-profile-menu > a:hover,
+:root[data-bizeka-theme="bizeka"] .s-user-profile-menu > a:focus {
+    background: var(--bizeka-accent-soft);
+    color: var(--bizeka-accent);
+}
+
+/* Tabs and property-grid category text */
+:root[data-bizeka-theme="bizeka"] .nav-tabs,
+:root[data-bizeka-theme="bizeka"] .ui-tabs-nav {
+    border-color: var(--bizeka-border);
+    background: transparent;
+}
+
+:root[data-bizeka-theme="bizeka"] .nav-tabs > li > a,
+:root[data-bizeka-theme="bizeka"] .nav-tabs .nav-link,
+:root[data-bizeka-theme="bizeka"] .ui-tabs-nav li a {
+    background: transparent;
+    color: var(--bizeka-text-muted);
+    border-color: transparent;
+}
+
+:root[data-bizeka-theme="bizeka"] .nav-tabs > li > a:hover,
+:root[data-bizeka-theme="bizeka"] .nav-tabs .nav-link:hover,
+:root[data-bizeka-theme="bizeka"] .ui-tabs-nav li a:hover {
+    background: var(--bizeka-accent-soft);
+    color: var(--bizeka-text);
+    border-color: var(--bizeka-border);
+}
+
+:root[data-bizeka-theme="bizeka"] .nav-tabs > li.active > a,
+:root[data-bizeka-theme="bizeka"] .nav-tabs > li.active > a:hover,
+:root[data-bizeka-theme="bizeka"] .nav-tabs > li.active > a:focus,
+:root[data-bizeka-theme="bizeka"] .nav-tabs .nav-link.active,
+:root[data-bizeka-theme="bizeka"] .ui-tabs-nav li.ui-tabs-active a,
+:root[data-bizeka-theme="bizeka"] .ui-tabs-nav li.ui-state-active a {
+    background: var(--bizeka-accent-soft);
+    color: var(--bizeka-accent);
+    border-color: var(--bizeka-accent);
+}
+
+:root[data-bizeka-theme="bizeka"] .category-title,
+:root[data-bizeka-theme="bizeka"] .category-title a,
+:root[data-bizeka-theme="bizeka"] .s-PropertyGrid .category-title,
+:root[data-bizeka-theme="bizeka"] .s-PropertyGrid .category-title a {
+    color: var(--bizeka-text);
+    border-color: var(--bizeka-border);
+}
+
+:root[data-bizeka-theme="bizeka"] .category-title:hover,
+:root[data-bizeka-theme="bizeka"] .category-title a:hover {
+    color: var(--bizeka-accent);
+}
+
+/* Flatpickr dark-mode vendor surface */
+:root[data-bizeka-theme="bizeka"] .flatpickr-calendar {
+    background: var(--bizeka-surface-raised);
+    color: var(--bizeka-text);
+    border: 1px solid var(--bizeka-border);
+    box-shadow: var(--bizeka-shadow-md);
+}
+
+:root[data-bizeka-theme="bizeka"] .flatpickr-calendar:before,
+:root[data-bizeka-theme="bizeka"] .flatpickr-calendar:after {
+    border-bottom-color: var(--bizeka-surface-raised);
+}
+
+:root[data-bizeka-theme="bizeka"] .flatpickr-calendar.arrowTop:before,
+:root[data-bizeka-theme="bizeka"] .flatpickr-calendar.arrowTop:after {
+    border-bottom-color: var(--bizeka-surface-raised);
+}
+
+:root[data-bizeka-theme="bizeka"] .flatpickr-months,
+:root[data-bizeka-theme="bizeka"] .flatpickr-month,
+:root[data-bizeka-theme="bizeka"] .flatpickr-weekdays {
+    background: var(--bizeka-surface-muted);
+    color: var(--bizeka-text);
+}
+
+:root[data-bizeka-theme="bizeka"] .flatpickr-current-month,
+:root[data-bizeka-theme="bizeka"] .flatpickr-current-month input.cur-year,
+:root[data-bizeka-theme="bizeka"] select.flatpickr-monthDropdown-months {
+    background: transparent;
+    color: var(--bizeka-text);
+}
+
+:root[data-bizeka-theme="bizeka"] .flatpickr-current-month input.cur-year,
+:root[data-bizeka-theme="bizeka"] select.flatpickr-monthDropdown-months {
+    border: 1px solid var(--bizeka-border);
+}
+
+:root[data-bizeka-theme="bizeka"] .flatpickr-current-month input.cur-year:focus,
+:root[data-bizeka-theme="bizeka"] select.flatpickr-monthDropdown-months:focus {
+    border-color: var(--bizeka-accent);
+    box-shadow: var(--bizeka-control-focus-shadow);
+}
+
+:root[data-bizeka-theme="bizeka"] .flatpickr-weekday {
+    background: transparent;
+    color: var(--bizeka-text-muted);
+}
+
+:root[data-bizeka-theme="bizeka"] .flatpickr-day {
+    color: var(--bizeka-text);
+    border-color: transparent;
+}
+
+:root[data-bizeka-theme="bizeka"] .flatpickr-day:hover,
+:root[data-bizeka-theme="bizeka"] .flatpickr-day:focus {
+    background: var(--bizeka-accent-soft);
+    border-color: var(--bizeka-border-strong);
+    color: var(--bizeka-text);
+}
+
+:root[data-bizeka-theme="bizeka"] .flatpickr-day.today {
+    border-color: var(--bizeka-accent);
+    color: var(--bizeka-accent);
+}
+
+:root[data-bizeka-theme="bizeka"] .flatpickr-day.selected,
+:root[data-bizeka-theme="bizeka"] .flatpickr-day.startRange,
+:root[data-bizeka-theme="bizeka"] .flatpickr-day.endRange,
+:root[data-bizeka-theme="bizeka"] .flatpickr-day.selected:hover,
+:root[data-bizeka-theme="bizeka"] .flatpickr-day.startRange:hover,
+:root[data-bizeka-theme="bizeka"] .flatpickr-day.endRange:hover {
+    background: var(--bizeka-accent);
+    border-color: var(--bizeka-accent);
+    color: var(--bizeka-accent-contrast);
+}
+
+:root[data-bizeka-theme="bizeka"] .flatpickr-day.inRange,
+:root[data-bizeka-theme="bizeka"] .flatpickr-day.prevMonthDay,
+:root[data-bizeka-theme="bizeka"] .flatpickr-day.nextMonthDay {
+    color: var(--bizeka-text-muted);
+}
+
+:root[data-bizeka-theme="bizeka"] .flatpickr-day.inRange {
+    background: var(--bizeka-accent-soft);
+    border-color: transparent;
+    box-shadow: -5px 0 0 var(--bizeka-accent-soft), 5px 0 0 var(--bizeka-accent-soft);
+}
+
+:root[data-bizeka-theme="bizeka"] .flatpickr-day.disabled,
+:root[data-bizeka-theme="bizeka"] .flatpickr-day.disabled:hover {
+    color: var(--bizeka-text-muted);
+    opacity: .45;
+}
+
+:root[data-bizeka-theme="bizeka"] .flatpickr-prev-month,
+:root[data-bizeka-theme="bizeka"] .flatpickr-next-month {
+    color: var(--bizeka-text-muted);
+    fill: var(--bizeka-text-muted);
+}
+
+:root[data-bizeka-theme="bizeka"] .flatpickr-prev-month:hover,
+:root[data-bizeka-theme="bizeka"] .flatpickr-next-month:hover {
+    color: var(--bizeka-accent);
+    fill: var(--bizeka-accent);
+}
+
+:root[data-bizeka-theme="bizeka"] .flatpickr-prev-month svg,
+:root[data-bizeka-theme="bizeka"] .flatpickr-next-month svg {
+    fill: currentColor;
+}
+
+:root[data-bizeka-theme="bizeka"] .flatpickr-time {
+    border-top-color: var(--bizeka-border);
+}
+
+:root[data-bizeka-theme="bizeka"] .flatpickr-time input,
+:root[data-bizeka-theme="bizeka"] .flatpickr-time .flatpickr-am-pm {
+    background: var(--bizeka-control-bg);
+    color: var(--bizeka-text);
+    border-color: var(--bizeka-border);
+}
+
+:root[data-bizeka-theme="bizeka"] .flatpickr-time input:focus,
+:root[data-bizeka-theme="bizeka"] .flatpickr-time .flatpickr-am-pm:focus {
+    background: var(--bizeka-control-bg-focus);
+    border-color: var(--bizeka-accent);
+    box-shadow: var(--bizeka-control-focus-shadow);
+}
+
+:root[data-bizeka-theme="bizeka"] .flatpickr-time .numInputWrapper span {
+    border-left-color: var(--bizeka-border);
+}
+
+:root[data-bizeka-theme="bizeka"] .flatpickr-time .numInputWrapper span:hover {
+    background: var(--bizeka-accent-soft);
+}
+
+/* Native selects are kept in one final block so quick filters and form
+   editors cannot receive different border/shadow treatments. */
+:root[data-bizeka-theme="bizeka"] select:not(.flatpickr-monthDropdown-months):not(:disabled) {
+    border: 1px solid var(--bizeka-control-edge) !important;
+    background-color: var(--bizeka-control-bg) !important;
+    color: var(--bizeka-control-text) !important;
+    border-radius: var(--bizeka-radius-sm);
+    box-shadow: var(--bizeka-control-shadow);
+}
+
+:root[data-bizeka-theme="bizeka"] select:not(.flatpickr-monthDropdown-months):not(:disabled):hover {
+    border-color: var(--bizeka-control-edge-hover) !important;
+    box-shadow: var(--bizeka-control-shadow-hover);
+}
+
+:root[data-bizeka-theme="bizeka"] select:not(.flatpickr-monthDropdown-months):not(:disabled):focus {
+    border-color: var(--bizeka-control-edge-focus) !important;
+    box-shadow: var(--bizeka-control-shadow-focus) !important;
+}
+
+:root[data-bizeka-theme="bizeka"] select:not(.flatpickr-monthDropdown-months):disabled {
+    background-color: var(--bizeka-surface-muted) !important;
+    color: var(--bizeka-text-muted) !important;
+    border: 1px solid var(--bizeka-border) !important;
+    box-shadow: none;
+}
+/* SlickGrid parity survives viewport virtualization by styling the row class
+   on both the row canvas and every rendered cell. */
+:root[data-bizeka-theme="bizeka"] .s-DataGrid .slick-row.even,
+:root[data-bizeka-theme="bizeka"] .s-DataGrid .slick-row.even .slick-cell,
+:root[data-bizeka-theme="bizeka"] .slickgrid-container .slick-row.even,
+:root[data-bizeka-theme="bizeka"] .slickgrid-container .slick-row.even .slick-cell,
+:root[data-bizeka-theme="bizeka"] .slick-viewport .slick-row.even,
+:root[data-bizeka-theme="bizeka"] .slick-viewport .slick-row.even .slick-cell {
+    background-color: var(--bizeka-grid-row) !important;
+    color: var(--bizeka-text);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-DataGrid .slick-row.odd,
+:root[data-bizeka-theme="bizeka"] .s-DataGrid .slick-row.odd .slick-cell,
+:root[data-bizeka-theme="bizeka"] .slickgrid-container .slick-row.odd,
+:root[data-bizeka-theme="bizeka"] .slickgrid-container .slick-row.odd .slick-cell,
+:root[data-bizeka-theme="bizeka"] .slick-viewport .slick-row.odd,
+:root[data-bizeka-theme="bizeka"] .slick-viewport .slick-row.odd .slick-cell {
+    background-color: var(--bizeka-grid-row-alt) !important;
+    color: var(--bizeka-text);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-DataGrid .slick-row:hover .slick-cell,
+:root[data-bizeka-theme="bizeka"] .slickgrid-container .slick-row:hover .slick-cell,
+:root[data-bizeka-theme="bizeka"] .slick-viewport .slick-row:hover .slick-cell,
+:root[data-bizeka-theme="bizeka"] .s-DataGrid .slick-row.active .slick-cell,
+:root[data-bizeka-theme="bizeka"] .slickgrid-container .slick-row.active .slick-cell,
+:root[data-bizeka-theme="bizeka"] .slick-viewport .slick-row.active .slick-cell,
+:root[data-bizeka-theme="bizeka"] .s-DataGrid .slick-row.selected .slick-cell,
+:root[data-bizeka-theme="bizeka"] .slickgrid-container .slick-row.selected .slick-cell,
+:root[data-bizeka-theme="bizeka"] .slick-viewport .slick-row.selected .slick-cell {
+    background-color: var(--bizeka-accent-soft) !important;
+}
+/* Layout & Content Container: Account for host navbar (48px) and outer margin (0.5rem * 2 = 1rem)
+   to ensure zero vertical overflow / scrollbar leakage across all screens. */
+:root[data-bizeka-theme="bizeka"] .s-main {
+    min-height: calc(100vh - 48px);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+:root[data-bizeka-theme="bizeka"] section.content {
+    box-sizing: border-box;
+    padding: 1rem !important;
+    margin: .5rem;
+    border: 1px solid var(--bizeka-border);
+    border-radius: var(--bizeka-radius-md);
+    background-color: var(--bizeka-surface);
+    box-shadow: var(--bizeka-shadow-sm);
+    gap: .75rem;
+    min-height: calc(100vh - 48px - 1rem) !important;
+    flex: 1 1 auto;
+}
+
+:root[data-bizeka-theme="bizeka"] section.content > .s-DataGrid,
+:root[data-bizeka-theme="bizeka"] section.content > .s-Panel {
+    margin: 0;
+    min-width: 0;
+    min-height: 0;
+}
+
+/* The host header is 48px high. On full-height pages (grids and panels),
+   constrain .s-main and section.content so the outer margin (0.5rem * 2 = 1rem = ~13px)
+   stays strictly inside the viewport without vertical scrollbar / overflow. */
+:root.full-height-page .s-main,
+html.full-height-page .s-main,
+body.full-height-page .s-main,
+.full-height-page .s-main,
+:root[data-bizeka-theme="bizeka"].full-height-page .s-main,
+:root[data-bzk-theme].full-height-page .s-main {
+    height: calc(100vh - 48px) !important;
+    max-height: calc(100vh - 48px) !important;
+    overflow: hidden !important;
+}
+
+:root.full-height-page section.content,
+html.full-height-page section.content,
+body.full-height-page section.content,
+.full-height-page section.content,
+:root[data-bizeka-theme="bizeka"].full-height-page section.content,
+:root[data-bzk-theme].full-height-page section.content,
+:root[data-bizeka-theme="bizeka"] .full-height-page section.content,
+:root[data-bzk-theme] .full-height-page section.content,
+:root[data-bizeka-theme="bizeka"] body.full-height-page section.content {
+    height: calc(100% - 1rem) !important;
+    max-height: calc(100% - 1rem) !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+}
+
+:root.full-height-page section.content > .s-DataGrid,
+:root.full-height-page section.content > .s-Panel,
+html.full-height-page section.content > .s-DataGrid,
+html.full-height-page section.content > .s-Panel,
+.full-height-page section.content > .s-DataGrid,
+.full-height-page section.content > .s-Panel {
+    /* Controls draw their edge as a box-shadow; without this the hidden overflow cuts it at the left. */
+    box-sizing: border-box;
+    padding: 2px;
+    height: 100% !important;
+    max-height: 100% !important;
+    min-height: 0 !important;
+    flex: 1 1 auto;
+    overflow: hidden !important;
+}
+
+@media (max-width: 767.98px) {
+    :root[data-bizeka-theme="bizeka"] .s-main {
+        min-height: calc(100vh - 48px);
+    }
+
+    :root[data-bizeka-theme="bizeka"] section.content {
+        padding: .5rem !important;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        gap: .5rem;
+        min-height: calc(100vh - 48px) !important;
+    }
+
+    /* Below 768px Serenity gives a grid the height of all its rows and expects the page to
+       scroll. This theme keeps the page fixed to the screen on phones as well, so the toolbar
+       and the pager stay in view and the rows scroll inside the grid. dvh follows the address
+       bar of a phone browser, which 100vh ignores. */
+    :root[data-bizeka-theme="bizeka"].full-height-page .s-main {
+        height: calc(100dvh - 48px) !important;
+        max-height: calc(100dvh - 48px) !important;
+        min-height: 0;
+    }
+
+    :root[data-bizeka-theme="bizeka"].full-height-page section.content {
+        height: 100% !important;
+        max-height: 100% !important;
+        min-height: 0 !important;
+    }
+
+    :root[data-bizeka-theme="bizeka"].full-height-page section.content > .s-Panel {
+        overflow-y: auto !important;
+    }
+
+    /* The container scrolls, not Serenity's viewport, so the grid's own geometry stays as it is. */
+    :root[data-bizeka-theme="bizeka"].full-height-page section.content > .s-DataGrid > .grid-container {
+        min-height: 0;
+        overflow-y: auto !important;
+        overscroll-behavior: contain;
+    }
+
+    :root[data-bizeka-theme="bizeka"].full-height-page section.content > .s-DataGrid > .grid-container > .slick-header {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+    }
+}
+
+/* Dynamic Forms: Fields Editor & Configuration Dialog Shared Theme Integration */
+/* On phones Serenity's field wraps and its caption takes the full basis. In a column that fills
+   the height and pushes the list into a second column, outside the form. */
+:root[data-bizeka-theme="bizeka"] .field.dynamic-fields-field {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+    width: 100% !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .field.dynamic-fields-field > .caption {
+    flex: 0 0 auto !important;
+    align-self: flex-start !important;
+    margin-bottom: 0.5rem !important;
+    font-weight: 600 !important;
+    color: var(--bizeka-text) !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .dynamic-editor-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    min-width: 0;
+}
+
+:root[data-bizeka-theme="bizeka"] .dynamic-editor-wrapper .s-Toolbar {
+    display: flex;
+    align-items: center;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 0 0.25rem 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .dynamic-table-scroll-container {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--bizeka-border);
+    border-radius: var(--bizeka-radius-md);
+    background-color: var(--bizeka-surface);
+    box-shadow: var(--bizeka-shadow-sm);
+}
+
+:root[data-bizeka-theme="bizeka"] .dynamic-table-scroll-container table.table {
+    width: 100%;
+    margin-bottom: 0 !important;
+    border-collapse: collapse;
+    background-color: transparent !important;
+    color: var(--bizeka-text) !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .dynamic-table-scroll-container table.table > :not(caption) > * > * {
+    background-color: transparent !important;
+    color: var(--bizeka-text) !important;
+    border-color: var(--bizeka-border) !important;
+    padding: 0.65rem 0.85rem;
+    vertical-align: middle;
+}
+
+:root[data-bizeka-theme="bizeka"] .dynamic-table-scroll-container table.table thead th {
+    background-color: var(--bizeka-surface-muted) !important;
+    color: var(--bizeka-text-muted) !important;
+    font-weight: 600;
+    font-size: 0.825rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-bottom: 1px solid var(--bizeka-border-strong) !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .dynamic-table-scroll-container table.table tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+:root[data-bizeka-theme="bizeka"] .dynamic-table-scroll-container table.table-striped tbody tr:nth-of-type(odd) {
+    background-color: color-mix(in srgb, var(--bizeka-text) 3%, transparent) !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .dynamic-table-scroll-container table.table tbody tr:hover {
+    background-color: var(--bizeka-accent-soft) !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .dynamic-table-scroll-container .edit-link-react {
+    color: var(--bizeka-accent) !important;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.15s ease;
+}
+
+:root[data-bizeka-theme="bizeka"] .dynamic-table-scroll-container .edit-link-react:hover {
+    color: var(--bizeka-accent-hover) !important;
+    text-decoration: underline;
+}
+
+:root[data-bizeka-theme="bizeka"] .dynamic-table-scroll-container .delete-link-react {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--bizeka-radius-sm);
+    color: var(--bs-danger, #ef4444) !important;
+    transition: all 0.15s ease;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+:root[data-bizeka-theme="bizeka"] .dynamic-table-scroll-container .delete-link-react:hover {
+    background-color: color-mix(in srgb, #ef4444 14%, var(--bizeka-surface-raised));
+    color: #ef4444 !important;
+    transform: scale(1.08);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog.ui-dialog,
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog .modal-content,
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog .ui-dialog-content,
+.s-DynamicFieldConfigDialog.ui-dialog,
+.s-DynamicFieldConfigDialog .modal-content,
+.s-DynamicFieldConfigDialog .ui-dialog-content {
+    background-color: var(--bizeka-surface) !important;
+    color: var(--bizeka-text) !important;
+    border: 1px solid var(--bizeka-border) !important;
+    border-radius: var(--bizeka-radius-md) !important;
+    box-shadow: var(--bizeka-shadow-md) !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog .modal-header,
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog .ui-dialog-titlebar,
+.s-DynamicFieldConfigDialog .modal-header,
+.s-DynamicFieldConfigDialog .ui-dialog-titlebar {
+    background-color: var(--bizeka-surface-raised) !important;
+    color: var(--bizeka-text) !important;
+    border-bottom: 1px solid var(--bizeka-border) !important;
+    padding: 0.75rem 1rem !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog .modal-title,
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog .ui-dialog-title,
+.s-DynamicFieldConfigDialog .modal-title,
+.s-DynamicFieldConfigDialog .ui-dialog-title {
+    color: var(--bizeka-text) !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog .modal-header .btn-close,
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog .ui-dialog-titlebar-close,
+.s-DynamicFieldConfigDialog .modal-header .btn-close,
+.s-DynamicFieldConfigDialog .ui-dialog-titlebar-close {
+    background-color: transparent !important;
+    opacity: 0.75;
+}
+
+:root[data-bizeka-theme="bizeka"][data-bizeka-mode="dark"] .s-DynamicFieldConfigDialog .modal-header .btn-close,
+:root[data-bizeka-theme="bizeka"][data-bzk-mode="dark"] .s-DynamicFieldConfigDialog .modal-header .btn-close,
+:root[data-bizeka-theme="bizeka"][data-bzk-mode="dim"] .s-DynamicFieldConfigDialog .modal-header .btn-close,
+[data-bzk-mode="dark"] .s-DynamicFieldConfigDialog .modal-header .btn-close,
+[data-bzk-mode="dim"] .s-DynamicFieldConfigDialog .modal-header .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog .modal-footer,
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog .ui-dialog-buttonpane,
+.s-DynamicFieldConfigDialog .modal-footer,
+.s-DynamicFieldConfigDialog .ui-dialog-buttonpane {
+    background-color: var(--bizeka-surface-raised) !important;
+    border-top: 1px solid var(--bizeka-border) !important;
+    padding: 0.75rem 1rem !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog .s-Form,
+:root[data-bizeka-theme="bizeka"] .dynamic-field-config-form,
+.s-DynamicFieldConfigDialog .s-Form,
+.dynamic-field-config-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.25rem 0;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog .s-Form .field,
+:root[data-bizeka-theme="bizeka"] .dynamic-field-config-form .field,
+.s-DynamicFieldConfigDialog .s-Form .field,
+.dynamic-field-config-form .field {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin: 0;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog .s-Form .field .caption,
+:root[data-bizeka-theme="bizeka"] .dynamic-field-config-form .field .caption,
+.s-DynamicFieldConfigDialog .s-Form .field .caption,
+.dynamic-field-config-form .field .caption {
+    width: 140px;
+    min-width: 140px;
+    margin: 0;
+    font-weight: 500;
+    color: var(--bizeka-text-muted);
+    text-align: right;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog .s-Form .field input.editor,
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog .s-Form .field select.editor,
+:root[data-bizeka-theme="bizeka"] .dynamic-field-config-form .field input.editor,
+:root[data-bizeka-theme="bizeka"] .dynamic-field-config-form .field select.editor,
+.s-DynamicFieldConfigDialog .s-Form .field input.editor,
+.s-DynamicFieldConfigDialog .s-Form .field select.editor,
+.dynamic-field-config-form .field input.editor,
+.dynamic-field-config-form .field select.editor {
+    /* Size, padding and font come from the shared control styles, so these
+       inputs match the Select2 type list and every other Serenity form. */
+    flex: 1 1 auto;
+    width: 100%;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog .s-Form .field select.editor option,
+:root[data-bizeka-theme="bizeka"] .dynamic-field-config-form .field select.editor option,
+.s-DynamicFieldConfigDialog .s-Form .field select.editor option,
+.dynamic-field-config-form .field select.editor option {
+    background-color: var(--bizeka-surface) !important;
+    color: var(--bizeka-text) !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog .s-Form .field input.editor:focus,
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog .s-Form .field select.editor:focus,
+:root[data-bizeka-theme="bizeka"] .dynamic-field-config-form .field input.editor:focus,
+:root[data-bizeka-theme="bizeka"] .dynamic-field-config-form .field select.editor:focus,
+.s-DynamicFieldConfigDialog .s-Form .field input.editor:focus,
+.s-DynamicFieldConfigDialog .s-Form .field select.editor:focus,
+.dynamic-field-config-form .field input.editor:focus,
+.dynamic-field-config-form .field select.editor:focus {
+    border-color: var(--bizeka-accent) !important;
+    box-shadow: 0 0 0 2px var(--bizeka-accent-soft) !important;
+    outline: none !important;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog .s-Form .field input.editor:disabled,
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog .s-Form .field select.editor:disabled,
+:root[data-bizeka-theme="bizeka"] .dynamic-field-config-form .field input.editor:disabled,
+:root[data-bizeka-theme="bizeka"] .dynamic-field-config-form .field select.editor:disabled,
+.s-DynamicFieldConfigDialog .s-Form .field input.editor:disabled,
+.s-DynamicFieldConfigDialog .s-Form .field select.editor:disabled,
+.dynamic-field-config-form .field input.editor:disabled,
+.dynamic-field-config-form .field select.editor:disabled {
+    background-color: var(--bizeka-surface-muted) !important;
+    color: var(--bizeka-text-muted) !important;
+    opacity: 0.6;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog .s-Form .field.field-checkbox,
+:root[data-bizeka-theme="bizeka"] .dynamic-field-config-form .field.field-checkbox,
+.s-DynamicFieldConfigDialog .s-Form .field.field-checkbox,
+.dynamic-field-config-form .field.field-checkbox {
+    align-items: center;
+}
+
+:root[data-bizeka-theme="bizeka"] .s-DynamicFieldConfigDialog .s-Form .field.field-checkbox input[type="checkbox"],
+:root[data-bizeka-theme="bizeka"] .dynamic-field-config-form .field.field-checkbox input[type="checkbox"],
+.s-DynamicFieldConfigDialog .s-Form .field.field-checkbox input[type="checkbox"],
+.dynamic-field-config-form .field.field-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    cursor: pointer;
+    background-color: var(--bizeka-surface-raised);
+    border: 1px solid var(--bizeka-border);
+}

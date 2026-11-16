@@ -1,0 +1,8 @@
+/*
+ * Bizeka Theme / Serene
+ * Load after Serenity's common-theme.css and slick.grid.base.css.
+ * This file deliberately adds visual tokens and paint-only overrides; it does
+ * not replace Serenity layout, menu, dialog, or SlickGrid geometry rules.
+ */
+@import url("./tokens.css");
+@import url("./bizeka-overrides.css");

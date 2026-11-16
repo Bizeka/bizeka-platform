@@ -1,0 +1,4 @@
+{
+  "RootNamespace": "Bizeka.DynamicForms",
+  "Extends": "defaults@9.0.0"
+}

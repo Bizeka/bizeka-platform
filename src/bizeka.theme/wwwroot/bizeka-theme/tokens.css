@@ -1,0 +1,69 @@
+:root {
+    --bizeka-font-sans: Inter, "Open Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --bizeka-radius-sm: .4rem;
+    --bizeka-radius-md: .7rem;
+    --bizeka-radius-lg: 1rem;
+    --bizeka-accent: #5267ed;
+}
+
+:root[data-bizeka-theme="bizeka"] {
+    color-scheme: light;
+    --bizeka-canvas: #f6f7fb;
+    --bizeka-surface: #ffffff;
+    --bizeka-surface-raised: #ffffff;
+    --bizeka-surface-muted: #f1f3f9;
+    --bizeka-text: #20263a;
+    --bizeka-text-muted: #626b84;
+    --bizeka-border: #e4e7f0;
+    --bizeka-border-strong: #d5daea;
+    --bizeka-shadow-color: 31 42 85;
+    --bizeka-shadow-sm: 0 1px 2px rgb(var(--bizeka-shadow-color) / 6%), 0 3px 10px rgb(var(--bizeka-shadow-color) / 4%);
+    --bizeka-shadow-md: 0 12px 28px rgb(var(--bizeka-shadow-color) / 10%), 0 2px 8px rgb(var(--bizeka-shadow-color) / 5%);
+    --bizeka-overlay: rgb(22 29 52 / 38%);
+    --bizeka-accent-contrast: #ffffff;
+    --bizeka-accent-soft: color-mix(in srgb, var(--bizeka-accent) 12%, var(--bizeka-surface));
+    --bizeka-accent-hover: color-mix(in srgb, var(--bizeka-accent) 86%, #000000);
+    --bizeka-focus-ring: color-mix(in srgb, var(--bizeka-accent) 32%, transparent);
+}
+
+:root[data-bizeka-theme="bizeka"][data-bizeka-mode="dark"],
+:root[data-bizeka-theme="bizeka"][data-bzk-mode="dark"],
+:root[data-bizeka-theme="bizeka"][data-bzk-mode="dim"] {
+    color-scheme: dark;
+    --bizeka-canvas: #151927;
+    --bizeka-surface: #1d2233;
+    --bizeka-surface-raised: #242a3d;
+    --bizeka-surface-muted: #292f43;
+    --bizeka-text: #edf0fb;
+    --bizeka-text-muted: #aeb6cd;
+    --bizeka-border: #353d54;
+    --bizeka-border-strong: #49536f;
+    --bizeka-shadow-color: 0 0 0;
+    --bizeka-shadow-sm: 0 1px 2px rgb(var(--bizeka-shadow-color) / 20%), 0 3px 10px rgb(var(--bizeka-shadow-color) / 14%);
+    --bizeka-shadow-md: 0 16px 36px rgb(var(--bizeka-shadow-color) / 30%), 0 3px 10px rgb(var(--bizeka-shadow-color) / 18%);
+    --bizeka-overlay: rgb(4 7 15 / 62%);
+    --bizeka-accent-contrast: #ffffff;
+    --bizeka-accent-soft: color-mix(in srgb, var(--bizeka-accent) 24%, var(--bizeka-surface));
+    --bizeka-accent-hover: color-mix(in srgb, var(--bizeka-accent) 90%, #ffffff);
+    --bizeka-focus-ring: color-mix(in srgb, var(--bizeka-accent) 42%, transparent);
+}
+
+@media (prefers-color-scheme: dark) {
+    /* "system" (or no mode attribute) follows the OS preference; explicit light and dark are not overridden. */
+    :root[data-bizeka-theme="bizeka"]:not([data-bizeka-mode="light"]):not([data-bizeka-mode="dark"]) {
+        color-scheme: dark;
+        --bizeka-canvas: #151927;
+        --bizeka-surface: #1d2233;
+        --bizeka-surface-raised: #242a3d;
+        --bizeka-surface-muted: #292f43;
+        --bizeka-text: #edf0fb;
+        --bizeka-text-muted: #aeb6cd;
+        --bizeka-border: #353d54;
+        --bizeka-border-strong: #49536f;
+        --bizeka-shadow-color: 0 0 0;
+        --bizeka-overlay: rgb(4 7 15 / 62%);
+        --bizeka-accent-soft: color-mix(in srgb, var(--bizeka-accent) 24%, var(--bizeka-surface));
+        --bizeka-accent-hover: color-mix(in srgb, var(--bizeka-accent) 90%, #ffffff);
+        --bizeka-focus-ring: color-mix(in srgb, var(--bizeka-accent) 42%, transparent);
+    }
+}

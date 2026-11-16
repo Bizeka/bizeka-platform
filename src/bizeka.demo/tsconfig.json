@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "jsxImportSource": "@serenity-is/domwise",
+    "strict": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "isolatedModules": true,
+    "paths": {
+      "@serenity-is/*": [
+        "./node_modules/@serenity-is/*/dist/index",
+        "./node_modules/.dotnet/serenity.*/dist/index"
+      ],
+      "@bizeka/*": [
+        "./node_modules/@bizeka/*/dist/index"
+      ]
+    },
+    "noEmit": true,
+    "noUncheckedSideEffectImports": false,
+    "noEmitOnError": true
+  },
+  "include": [
+    "Modules/**/*"
+  ]
+}
