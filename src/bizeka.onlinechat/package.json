@@ -22,7 +22,7 @@
     "@serenity-is/sleekgrid": "10.6.3"
   },
   "dependencies": {
-    "@microsoft/signalr": "^10.0.11"
+    "@microsoft/signalr": "^11.0.0"
   },
   "scripts": {
     "build": "node ./tsbuild.js && tsc --noEmit && npm run build:package",
