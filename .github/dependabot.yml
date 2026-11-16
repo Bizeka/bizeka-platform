@@ -10,6 +10,15 @@ updates:
       - dependency-name: "Serenity.*"
       - dependency-name: "sergen"
       - dependency-name: "FluentMigrator*"
+      # .NET runtime libraries and SQL providers stay on the .NET 10 / Serenity line; majors move with the platform upgrade.
+      - dependency-name: "Microsoft.*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "System.*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "MySqlConnector"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "Npgsql*"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: npm
     directories:
       - /src/bizeka.extensions
@@ -25,6 +34,9 @@ updates:
       - dependency-name: "@serenity-is/*"
       # TypeScript majors move with the Serenity upgrade.
       - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+      # The SignalR client follows the .NET server major.
+      - dependency-name: "@microsoft/signalr"
         update-types: ["version-update:semver-major"]
   - package-ecosystem: github-actions
     directory: /
