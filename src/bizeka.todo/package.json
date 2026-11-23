@@ -28,7 +28,7 @@
   "dependencies": {},
   "devDependencies": {
     "@serenity-is/tsbuild": "10.6.3",
-    "esbuild": "^0.25.11",
+    "esbuild": "^0.28.2",
     "typescript": "7.0.2",
     "@bizeka/dynamicforms": "file:../bizeka.dynamicforms",
     "@bizeka/extensions": "file:../bizeka.extensions",
